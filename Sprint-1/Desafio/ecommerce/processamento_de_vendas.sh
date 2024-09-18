@@ -1,14 +1,16 @@
 #!/bin/bash
 cd ~/PB-JOAO-VITOR-DE-MELO-REVOREDO/Sprint-1/Desafio/ecommerce
 data_sistema=$(date +"%Y%m%d")
-quantidade_produtos=$(awk -F ',' 'END {print $1}' dados_de_vendas.csv)
-ultima_data=$(awk -F ',' 'END {print $5}' dados_de_vendas.csv)
 
+mkdir vendas
 cp dados_de_vendas.csv ~/PB-JOAO-VITOR-DE-MELO-REVOREDO/Sprint-1/Desafio/ecommerce/vendas
+cd vendas
+mkdir backup
 cp dados_de_vendas.csv ~/PB-JOAO-VITOR-DE-MELO-REVOREDO/Sprint-1/Desafio/ecommerce/vendas/backup
 cd ~/PB-JOAO-VITOR-DE-MELO-REVOREDO/Sprint-1/Desafio/ecommerce/vendas/backup
 mv dados_de_vendas.csv backup-dados-${data_sistema}.csv
-
+quantidade_produtos=$(cat backup-dados-${data_sistema}.csv | cut -d"," -f1| tail -n 1)
+ultima_data=$(cat backup-dados-${data_sistema}.csv | cut -d"," -f5 | tail -n 1)
 echo relatorio.txt-${data_sistema}
 echo \ >> relatorio.txt-${data_sistema}
 echo "Data do Sistema: $(date +"%Y/%m/%d %H:%M")" >> relatorio.txt-${data_sistema}
