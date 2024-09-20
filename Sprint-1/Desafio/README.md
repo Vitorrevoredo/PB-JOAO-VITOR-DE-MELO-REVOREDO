@@ -52,11 +52,11 @@ Para adicionar as 10 primeiras linhas do arquivo de backup, usei o comando head,
 <h3>3. Evidências do Código</h3>
 <p>Abaixo estão algumas das versões do código que utilizei durante o processo, além das evidências visuais que ajudam a ilustrar cada , sendo a ultima imagem a versão final do codigo.</p>
 <img src="/Sprint-1/Evidencias/primeira_versao_executavel.png" alt="Primeira versao do codigo" width="400px">
-<img src="/Sprint-1/Evidencias/teste1.png" alt="Teste execucao 1" width="600px">
-<img src="/Sprint-1/Evidencias/versao01.png" alt ="Versao 1 do codigo" width="600px">
-<img src='/Sprint-1/Evidencias/versao02.png' alt="Versao 2 do codigo" width="600px">
-<img src="/Sprint-1/Evidencias/versao03.png" alt="Versão 3 do codigo" width="600px">
-<img src="/Sprint-1/Evidencias/versaoutilizada.png.png" alt="Versao utilizada" width="600px">
+<img src="/Sprint-1/Evidencias/teste1.png" alt="Teste execucao 1" width="400px">
+<img src="/Sprint-1/Evidencias/versao01.png" alt ="Versao 1 do codigo" width="400px">
+<img src='/Sprint-1/Evidencias/versao02.png' alt="Versao 2 do codigo" width="400px">
+<img src="/Sprint-1/Evidencias/versao03.png" alt="Versão 3 do codigo" width="400px">
+<img src="/Sprint-1/Evidencias/versaoutilizada.png" alt="Versao utilizada" width="600px">
 <h3>4. Crontab</h3>
 <p>
 Para automatizar a execução do arquivo durante os 4 dias e a geração dos relatórios, resolvi usar o `crontab`, facilitando o processo de automatização. Fiz um teste antes de agendar da forma correta, e depois coloquei o arquivo de evidencia de teste.
