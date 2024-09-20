@@ -50,15 +50,19 @@ Para adicionar as 10 primeiras linhas do arquivo de backup, usei o comando head,
 <img src="/Sprint-1/Evidencias/arquivozip.png" alt="Criação do Arquivo ZIP" width="600px">
 <img src="/Sprint-1/Evidencias/arquivo zip gerado.png" alt="Evidencia de arquivo ZIP" width="600px">
 <h3>3. Evidências do Código</h3>
-<p>Abaixo estão algumas das versões do código que utilizei durante o processo, além das evidências visuais que ajudam a ilustrar cada passo.</p>
+<p>Abaixo estão algumas das versões do código que utilizei durante o processo, além das evidências visuais que ajudam a ilustrar cada , sendo a ultima imagem a versão final do codigo.</p>
 <img src="/Sprint-1/Evidencias/primeira_versao_executavel.png" alt="Primeira versao do codigo" width="400px">
 <img src="/Sprint-1/Evidencias/teste1.png" alt="Teste execucao 1" width="600px">
-<img src="/Sprint-1/Evidencias/versao2.png" alt="Versao utilizada" width="600px">
+<img src="/Sprint-1/Evidencias/versao01.png" alt ="Versao 1 do codigo" width="600px">
+<img src='/Sprint-1/Evidencias/versao02.png' alt="Versao 2 do codigo" width="600px">
+<img src="/Sprint-1/Evidencias/versao03.png" alt="Versão 3 do codigo" width="600px">
+<img src="/Sprint-1/Evidencias/versaoutilizada.png.png" alt="Versao utilizada" width="600px">
 <h3>4. Crontab</h3>
 <p>
-Para automatizar a execução do arquivo durante os 4 dias e a geração dos relatórios, resolvi usar o `crontab`, facilitando o processo de automatização.
+Para automatizar a execução do arquivo durante os 4 dias e a geração dos relatórios, resolvi usar o `crontab`, facilitando o processo de automatização. Fiz um teste antes de agendar da forma correta, e depois coloquei o arquivo de evidencia de teste.
 </p>
-<img src="/Sprint-1/Evidencias/configurando crontab teste 01.png" alt="Teste crontab 1" width="400px">
+<img src="/Sprint-1/Evidencias/configurando crontab teste 01.png" alt="Teste crontab 1" width="400px"> 
+<img src="/Sprint-1/Evidencias/resultado config sort 01.png" alt="Resultado teste de execução" width="400px">
 <img src="/Sprint-1/Evidencias/crontab final.png" alt="Versao do crontab utilizada" width="600px">
 <h3>5. Relatorio final:</h3>
 Para consolidar o processamento após os 4 dias, criei um segundo script `.sh` como solicitado. Esse script usa o comando `cat` para combinar todos os arquivos `.txt` e gerar um relatório consolidado.
