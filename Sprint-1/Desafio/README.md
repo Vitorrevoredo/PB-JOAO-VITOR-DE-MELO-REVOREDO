@@ -65,8 +65,10 @@ Para automatizar a execução do arquivo durante os 4 dias e a geração dos rel
 <img src="/Sprint-1/Evidencias/resultado config sort 01.png" alt="Resultado teste de execução" width="400px">
 <img src="/Sprint-1/Evidencias/crontab final.png" alt="Versao do crontab utilizada" width="600px">
 <h3>5. Relatorio final:</h3>
-Para consolidar o processamento após os 4 dias, criei um segundo script `.sh` como solicitado. Esse script usa o comando `cat` para combinar todos os arquivos `.txt` e gerar um relatório consolidado.
+Para consolidar o processamento após os 4 dias, criei um segundo script `.sh` como solicitado. Esse script usa o comando `cat` para combinar todos os arquivos `.txt` e gerar um relatório , coloquei como evidencia o resultado do teste.
 <img src="/Sprint-1/Evidencias/consolidador_versao1.png" alt="Versão 1 do consolidador" width="600px">
+<img src="/Sprint-1/Evidencias/testeconsolidador.png" alt="Teste consolidador" width="400px">
+<img src="/Sprint-1/Evidencias/resultadoconsolidador.png" alt="Resultado teste consolidador" width="400px">
 <h3>6. Comentários Finais</h3>
 <p>O desafio foi resolvido com sucesso utilizando scripts em Bash que realizam o processamento e backup dos arquivos de vendas, geram relatórios diários e consolidam os resultados em um relatório final de 4 dias. A estrutura foi organizada de forma a permitir a execução diária sem perda de dados, garantindo que os relatórios sejam gerados com base nos dados corretos.</p>
 <p>
