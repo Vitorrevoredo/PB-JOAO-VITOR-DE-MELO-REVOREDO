@@ -32,9 +32,8 @@ CREATE TABLE locacao (
 );
 -- Forma Normal (2NF)
 --A tabela original foi dividida em tabelas menores para garantir que cada atributo não chave dependesse inteiramente da chave primária. Por exemplo:
--- tabelas separadas para Clientes,Carros, Vendedores e Combustivel.
--- Cada tabela agora contém uma chave primária única que representa os dados de forma mais organizada e sem redundância e una chave estrangeira que permite a relação
--- com a tabela tb_locacao
+-- tabelas separadas para Clientes,Carros, Vendedores, info_locacoes.
+-- Cada tabela contém uma chave primária única que representa os dados de forma mais organizada que permite a relação com a tabela tb_locacao.
 
 -- Tabela de Clientes
 

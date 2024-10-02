@@ -9,6 +9,7 @@ CREATE TABLE carros (
     modeloCarro VARCHAR(80),
     anoCarro INT,
     idcombustivel INT,
+    FOREIGN KEY (idCarro) REFERENCES info_Locacoes(idCarro),
     FOREIGN KEY (idcombustivel) REFERENCES combustivel(idcombustivel),
     FOREIGN KEY (idCarro) REFERENCES tb_locacao(idCarro)
 )

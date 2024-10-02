@@ -6,7 +6,7 @@ CREATE TABLE clientes (
     cidadeCliente VARCHAR(40),
     estadoCliente VARCHAR(40),
     paisCliente VARCHAR(40),
-    FOREIGN KEY (idCliente) REFERENCES tb_locacao(idCliente)
+    FOREIGN KEY (idCliente) REFERENCES info_Locacoes(idCliente)
    );
 
 

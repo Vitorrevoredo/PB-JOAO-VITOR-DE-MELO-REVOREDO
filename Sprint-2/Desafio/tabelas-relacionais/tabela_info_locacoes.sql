@@ -1,6 +1,6 @@
 -- tabela com informações de locação
 
-CREATE TABLE info_Locacoes (
+CREATE TABLE info_locacoes (
     idLocacao INT PRIMARY KEY,
     idCliente INT,
     idCarro INT,
@@ -12,6 +12,7 @@ CREATE TABLE info_Locacoes (
     vlrDiaria DECIMAL(18, 2),
     dataEntrega DATE,
     horaEntrega TIME,
+    FOREIGN KEY (idLocacao) REFERENCES tb_locacao(idLocacao),
     FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente),
     FOREIGN KEY (idCarro) REFERENCES Carro(idCarro),
     FOREIGN KEY (idcombustivel) REFERENCES Combustivel(idcombustivel),
@@ -22,10 +23,10 @@ CREATE TABLE info_Locacoes (
 INSERT INTO info_locacoes
 SELECT
 	tb_locacao.idLocacao,
-	clientes.idCliente,
-    carros.idCarro,
-    combustivel.idcombustivel,
-    vendedores.idVendedor,
+	tb_locacao.idCliente,
+    tb_locacao.idCarro,
+    tb_locacao.idcombustivel,
+    tb_locacao.idVendedor,
     tb_locacao.dataLocacao,
     tb_locacao.horaLocacao,
     tb_locacao.qtdDiaria,
