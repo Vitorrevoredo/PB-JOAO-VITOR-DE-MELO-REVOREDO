@@ -4,10 +4,10 @@
 CREATE TABLE combustivel (
     idcombustivel INT PRIMARY KEY,
     tipoCombustivel VARCHAR(20),
-    FOREING KEY (idcombustivel) REFERENCES tb_locacao(idcombustivel)
+    FOREIGN KEY (idCombustivel) REFERENCES tb_locacao(idCombustivel)
 )
 
-INSERT INTO combustivel (idcombustivel,tipoCombustivel)
+INSERT INTO combustivel (idCombustivel,tipoCombustivel)
 SELECT DISTINCT
 	idcombustivel,
 	tipoCombustivel

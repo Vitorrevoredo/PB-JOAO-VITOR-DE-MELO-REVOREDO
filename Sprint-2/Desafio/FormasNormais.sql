@@ -55,7 +55,8 @@ FROM
     tb_locacao;
 
   -- Forma Normal(3NF)
-  -- As tabelas foram ajustadas para que cada coluna não chave dependesse apenas da chave primária, como na criação da tabela de combustiveis
+  -- As tabelas foram ajustadas para que cada coluna não chave dependesse apenas da chave primária, como na criação da tabela de combustiveis,
+  -- pois todas as colunas não-chave estão diretamente relacionada com sua respectiva chave primária.
    -- Tabela combustivel
 
 
