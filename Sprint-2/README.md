@@ -48,16 +48,16 @@
 
 <h2>Exercícios</h2>
 
-<p>Para resolução dos exercicios utilizei o DBeaver como base para ir testando as querys de pesquisa e obter os resultados solicitados em cada exercicio, e realizando os ajustes para obter os resultados corretos</p>
+<p>Para resolução dos exercicios utilizei o DBeaver como base para ir testando as querys de pesquisa e obter os resultados solicitados em cada exercicio, e realizando os ajustes até obter os resultados corretos!</p>
 
-<img src="/Sprint-2/Exercicios/evidencias/exemplo_ex.png" width="350px">
-<img src="/Sprint-2/Exercicios/evidencias/erro_biblioex04.png" width="250px">
+<img src="/Sprint-2/Exercicios/evidencias/exemplo_ex.png" width="450px">
+<img src="/Sprint-2/Exercicios/evidencias/erro_biblioex04.png" width="500px">
 <img src="/Sprint-2/Exercicios/evidencias/evidencia_conclusão_exe.png" width="400px">
 
 <strong>Evidencia de conclusão de Todos exercicios</strong>
-<p>Coloquei como anexo um exemplo de conclusão dos exercicios e o geral de evidencia de conclusão de todos, para evitar redundancia de colocar cada aba</p>
-<img src="/Sprint-2/Exercicios/evidencias/loja_evidencia.png" width="400px">
-<img src="/Sprint-2/Exercicios/evidencias/biblioteca_evidencia.png" width="400px">
+<p>Coloquei como anexo o geral de evidencia de conclusão de todos , para evitar redundancia de colocar cada aba!</p>
+<img src="/Sprint-2/Exercicios/evidencias/loja_evidencia.png" width="350px">
+<img src="/Sprint-2/Exercicios/evidencias/biblioteca_evidencia.png" width="350px">
 
 
 <h2>Exercicios resolvidos</h2>
@@ -73,4 +73,7 @@
 
 <h2>Comentários Finais</h2>
 
-<p>O desafio foi resolvido com sucesso, resultando em uma estrutura de dados organizada e eficiente para futuras análises e consultas. A aplicação das 3 Formas Normais, seguida pela criação de um modelo dimensional, trouxe mais clareza e performance ao banco de dados, garantindo a integridade dos dados e uma maior facilidade na realização de consultas complexas.</p>
+<p>O desafio foi resolvido com sucesso, resultando em uma estrutura de dados organizada e eficiente para futuras análises e consultas. A aplicação das 3 Formas Normais, seguida pela criação de um modelo dimensional, não apenas melhorou a clareza e a performance do banco de dados, mas também garantiu a integridade dos dados e facilitou a execução de consultas complexas.</p>
+
+<p>A normalização e modelagem de dados foram etapas desafiadoras, mas extremamente enriquecedoras. O processo de eliminação de redundâncias, criação de dimensões e estruturação da tabela fato proporcionou um entendimento mais profundo sobre a importância de uma base de dados bem projetada. Esse aprendizado será fundamental para enfrentar desafios mais complexos em futuros projetos de análise e modelagem de dados.</p>
+
