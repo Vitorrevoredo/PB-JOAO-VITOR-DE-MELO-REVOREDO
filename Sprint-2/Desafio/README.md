@@ -30,21 +30,21 @@
   <li><strong>Evidências da Normalização e criação das relações:</strong> Abaixo estão imagens que mostram a criação das tabelas e ajustes das relações:</li>
 </ol>
 
-<img src="/Evidencias/criação-tabela-clientes-nf2.png" width="400px" alt="Criação da Tabela de Clientes NF2">
-<img src="/Evidencias/inserindo-dados-tbclientes.png" width="400px" alt="Inserindo Dados na Tabela de Clientes">
-<img src="/Evidencias/cr-tb-carros.png" width="400px" alt="Criação da Tabela de Carros">
-<img src="/Evidencias/ajuste-tbcarros.png" width="400px" alt="Ajuste na Tabela de Carros">
+<img src="/Sprint-2/Evidencias/criação-tabela-clientes-nf2.png" width="400px" alt="Criação da Tabela de Clientes NF2">
+<img src="/Sprint-2/Evidencias/inserindo-dados-tbclientes.png" width="400px" alt="Inserindo Dados na Tabela de Clientes">
+<img src="/Sprint-2/Evidencias/cr-tb-carros.png" width="400px" alt="Criação da Tabela de Carros">
+<img src="/Sprint-2/Evidencias/ajuste-tbcarros.png" width="400px" alt="Ajuste na Tabela de Carros">
 
 <p>Para solucionar os erros nas relações, utilizei <code>FOREIGN KEY</code> para estabelecer as dependências corretas entre as tabelas, conforme mostrado nas imagens abaixo:</p>
 
-<img src="/Evidencias/ajuste-relacao-tabelas.png" width="350px" alt="Ajuste de Relação entre as Tabelas">
-<img src="/Evidencias/evidencia-ajuste-relacao.png" width="350px" alt="Evidência do Ajuste de Relação entre as Tabelas">
+<img src="/Sprint-2/Evidencias/ajuste-relacao-tabelas.png" width="350px" alt="Ajuste de Relação entre as Tabelas">
+<img src="/Sprint-2/Evidencias/evidencia-ajuste-relacao.png" width="350px" alt="Evidência do Ajuste de Relação entre as Tabelas">
 
 <p>Para detalhar melhor os comandos SQL utilizados na normalização e criação das tabelas, disponibilizei um arquivo que descreve a lógica de aplicação das Formas Normais, assim como um diretório com os scripts de criação das tabelas relacionais:</p>
 
 <ul>
-  <li><a href="SPRINT-2/Desafio/FormasNormais.sql">Formas Normais e Normalização</a></li>
-  <li><a href="SPRINT-2/Desafio/tabelas-relacionais">Tabelas Relacionais Usadas</a></li>
+  <li><a href="/Sprint-2/Desafio/FormasNormais.sql">Formas Normais e Normalização</a></li>
+  <li><a href="/Sprint-2/Desafio/tabelas-relacionais">Tabelas Relacionais Usadas</a></li>
 </ul>
 
 <h3>Modelagem Dimensional</h3> 
@@ -65,16 +65,16 @@
 
 <h2>Exemplo de criação das views</h2>
 
-<img src="/Evidencias/ev-criação-views.png" width="400px" alt="Criação das Views">
-<img src="/Evidencias/testeviews.png" width="400px" alt="Teste das Views">
+<img src="/Sprint-2/Evidencias/ev-criação-views.png" width="400px" alt="Criação das Views">
+<img src="/Sprint-2/Evidencias/testeviews.png" width="400px" alt="Teste das Views">
 
 <h3>Versões dos modelos</h3>
 
 <p>Aqui estão alguns exemplos de modelos utilizados durante as versões da modelagem da <code>tb_locacao</code>, sendo a última a versão final do projeto:</p>
 
-<img src="/Evidencias/modelagemv1.png" alt="Modelo Versão 1">
-<img src="/Evidencias/modelagemv2.png" alt="Modelo Versão 2">
-<img src="/Evidencias/modelagemv3.png" alt="Modelo Versão 3">
-<img src="/Desafio/Modelo Relacional e Dimensional.png" alt="Modelo Relacional e Dimensional Final">
+<img src="/Sprint-2/Evidencias/modelagemv1.png" alt="Modelo Versão 1">
+<img src="/Sprint-2/Evidencias/modelagemv2.png" alt="Modelo Versão 2">
+<img src="/Sprint-2/Evidencias/modelagemv3.png" alt="Modelo Versão 3">
+<img src="/Sprint-2/Desafio/Modelo Relacional e Dimensional.png" alt="Modelo Relacional e Dimensional Final">
 <h2> Comentários Finais </h2>
 O desafio foi concluído com sucesso ao normalizar a tabela de locações e transformar o modelo relacional em dimensional. Através das etapas de normalização e da criação de dimensões e tabela fato, foi possível otimizar consultas e eliminar redundâncias, garantindo a integridade e eficiência dos dados para análises futuras.
