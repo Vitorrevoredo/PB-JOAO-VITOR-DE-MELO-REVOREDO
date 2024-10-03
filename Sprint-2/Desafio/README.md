@@ -1,8 +1,9 @@
 <h1>Desafio: Normalização da Tabela e Modelagens Dimensionais e Relacionais</h1> 
 
 <p>O objetivo deste desafio era normalizar uma tabela de uma concessionária, aplicando as 3 Formas Normais (1FN, 2FN, 3FN) à sua estrutura, e, a partir disso, transformar o modelo relacional existente em um modelo dimensional. Isso permitiu a criação de consultas eficientes para análise de dados e relatórios.</p>
-
+<strong> - MODELO RELACIONAL GERADO</strong>
 <img src="/Sprint-2/Desafio/modelo_relacional.png" width="400px" alt="Modelo Relacional gerado">
+<strong> - MODELO DIMENSIONAL GERADO</strong>
 <img src="/Sprint-2/Desafio/modelo_dimensional.png" width="400px" alt="Modelo Dimensional gerado">
 
 <h2>Normalização</h2> 
@@ -43,10 +44,11 @@
 
 <p>Para detalhar melhor os comandos SQL utilizados na normalização e criação das tabelas, fiz um arquivo como solicitado que descreve a lógica de aplicação das Formas Normais, assim como um diretório com os scripts de criação das tabelas relacionais:</p>
 
-<ul>
+<h2> Arquivos das Formas Normais</h2>
   <li><a href="/Sprint-2/Desafio/FormasNormais.sql">Formas Normais e Normalização</a></li>
+<h2> Arquivos das Tabelas Criadas</h2>
   <li><a href="/Sprint-2/Desafio/tabelas-relacionais">Tabelas Relacionais Usadas</a></li>
-</ul>
+
 
 <h3>Modelagem Dimensional</h3> 
 
@@ -68,14 +70,17 @@
 
 <img src="/Sprint-2/Evidencias/ev-criação-views.png" width="400px" alt="Criação das Views">
 <img src="/Sprint-2/Evidencias/testeviews.png" width="400px" alt="Teste das Views">
+
+<h2> Arquivos das Views Criadas</h2>
 <li><a href="/Sprint-2/Desafio/views/">Views Utilizadas</a></li>
 
 <h3>Versões dos modelos</h3>
 <p>Aqui estão alguns exemplos de modelos utilizados durante as versões da modelagem da <code>tb_locacao</code> que sofreram muitas alterações durante o processo, sendo a última a versão final do projeto:</p>
 
-<img src="/Sprint-2/Evidencias/modelagemv1.png" alt="Modelo Versão 1">
-<img src="/Sprint-2/Evidencias/modelagemv2.png" alt="Modelo Versão 2">
-<img src="/Sprint-2/Evidencias/modelagemv3.png" alt="Modelo Versão 3">
+<img src="/Sprint-2/Evidencias/modelagemv1.png" alt="Modelo Versão 1" width="300px" alt="Versão 1 modelagem">
+<img src="/Sprint-2/Evidencias/modelagemv2.png" alt="Modelo Versão 2" width="300px" alt="Versão 2 modelagem">
+<img src="/Sprint-2/Evidencias/modelagemv3.png" alt="Modelo Versão 3" width="300px" alt="Versão 3 modelagem">
+<img src="/Sprint-2/Evidencias/"
 
 <h2> Comentários Finais </h2>
 O desafio foi concluído com sucesso ao normalizar a tabela de locações e transformar o modelo relacional em dimensional. Através das etapas de normalização e da criação de dimensões e tabela fato, foi possível otimizar consultas e eliminar redundâncias, garantindo a integridade e eficiência dos dados para análises futuras.
