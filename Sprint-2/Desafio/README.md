@@ -1,59 +1,80 @@
-# Desafio: Normalização da Tabela e Modelagens Dimensionais e Relacionais
+<h1>Desafio: Normalização da Tabela e Modelagens Dimensionais e Relacionais</h1> 
 
-O objetivo deste desafio era normalizar uma tabela de uma concessionária, aplicando as 3 Formas Normais (1FN, 2FN, 3FN) à sua estrutura, e, a partir disso, transformar o modelo relacional existente em um modelo dimensional. Isso permitiu a criação de consultas eficientes para análise de dados e relatórios.
+<p>O objetivo deste desafio era normalizar uma tabela de uma concessionária, aplicando as 3 Formas Normais (1FN, 2FN, 3FN) à sua estrutura, e, a partir disso, transformar o modelo relacional existente em um modelo dimensional. Isso permitiu a criação de consultas eficientes para análise de dados e relatórios.</p>
 
-## Problemas Encontrados e Soluções
+<h2>Problemas Encontrados e Soluções</h2> 
 
-- **Redundância de dados:** A tabela original tinha informações desorganizadas, o que aumentava o risco de erros e inconsistências. Isso foi resolvido pela criação de dimensões específicas.
-- **Consultas ineficientes:** A falta de organização dificultava a execução de consultas complexas. Após a normalização e a criação do modelo dimensional, o desempenho das consultas foi melhorado.
+<ul>
+  <li><strong>Redundância de dados:</strong> A tabela original tinha informações desorganizadas, o que aumentava o risco de erros e inconsistências. Isso foi resolvido pela criação de dimensões específicas.</li>
+  <li><strong>Consultas ineficientes:</strong> A falta de organização dificultava a execução de consultas complexas. Após a normalização e a criação do modelo dimensional, o desempenho das consultas foi melhorado.</li>
+</ul>
 
-## Passo a Passo para Resolução do Desafio
+<h2>Passo a Passo para Resolução do Desafio</h2> 
 
-A abordagem que utilizei foi com o auxílio da ferramenta **DBeaver** para executar os comandos SQL e verificar o funcionamento da normalização. O desafio exigiu a separação de dados em tabelas distintas para eliminar redundâncias e melhorar a integridade dos dados. As Tabelas criadas foram:
-- **Clientes**
-- **Carros**
-- **Vendedores**
-- **Combustível**
-- **Info_locacoes**
+<p>A abordagem que utilizei foi com o auxílio da ferramenta <strong>DBeaver</strong> para executar os comandos SQL e verificar o funcionamento da normalização. O desafio exigiu a separação de dados em tabelas distintas para eliminar redundâncias e melhorar a integridade dos dados. As tabelas criadas foram:</p>
+<ul>
+  <li><strong>Clientes</strong></li>
+  <li><strong>Carros</strong></li>
+  <li><strong>Vendedores</strong></li>
+  <li><strong>Combustível</strong></li>
+  <li><strong>Info_locacoes</strong></li>
+</ul>
 
-Essas dimensões permitiram a eliminação da duplicidade de dados e facilitaram a manutenção futura. O foco foi garantir que os dados fossem organizados de forma eficiente e atendessem às **Três Formas Normais**.
+<p>Essas dimensões permitiram a eliminação da duplicidade de dados e facilitaram a manutenção futura. O foco foi garantir que os dados fossem organizados de forma eficiente e atendessem às <strong>Três Formas Normais</strong>.</p>
 
-### Etapas Principais:
+<h3>Etapas Principais:</h3> 
 
-1. **Entendimento da Estrutura Original:** A tabela original de locações (`tb_locacao`) incluía informações redundantes sobre clientes, carros, vendedores e combustíveis. O primeiro passo foi identificar as entidades principais para criar um modelo relacional mais robusto.
-   
-2. **Normalização (1FN, 2FN, 3FN):** Dividi as informações em tabelas menores (dimensões), cada uma focada em uma entidade (Cliente, Carro, Vendedor, Combustível, Info_Locacoes). Isso eliminou a redundância de dados e melhorou a integridade. Coloquei cada id das tabelas como FOREIGN KEY na criação das tabelas, o que permitiu melhorar os relacionamentos e exemplificar as dependências no modelo relacional gerado.
+<ol>
+  <li><strong>Entendimento da Estrutura Original:</strong> A tabela original de locações (<code>tb_locacao</code>) incluía informações redundantes sobre clientes, carros, vendedores e combustíveis. O primeiro passo foi identificar as entidades principais para criar um modelo relacional mais robusto.</li>
+  <li><strong>Normalização (1FN, 2FN, 3FN):</strong> Dividi as informações em tabelas menores (dimensões), cada uma focada em uma entidade (Cliente, Carro, Vendedor, Combustível) e percebi que era necessário criar uma <code>info_locacoes</code>, que seria utilizada para armazenar todas as informações de vendas num período, funcionando como uma tabela fato do modelo relacional. Coloquei cada ID das tabelas como <code>FOREIGN KEY</code> na criação das relações.</li>
+  <li><strong>Evidências da Normalização e criação das relações:</strong> Abaixo estão imagens que mostram a criação das tabelas e ajustes das relações:</li>
+</ol>
 
-3. **Evidências da Normalização e criação das relações:** Coloquei algumas imagens abaixo que mostram melhor os passos de criação das tabelas e ajuste das relações, inclusive com alguns erros encontrados durante o processo:
+<img src="/Evidencias/criação-tabela-clientes-nf2.png" width="400px" alt="Criação da Tabela de Clientes NF2">
+<img src="/Evidencias/inserindo-dados-tbclientes.png" width="400px" alt="Inserindo Dados na Tabela de Clientes">
+<img src="/Evidencias/cr-tb-carros.png" width="400px" alt="Criação da Tabela de Carros">
+<img src="/Evidencias/ajuste-tbcarros.png" width="400px" alt="Ajuste na Tabela de Carros">
 
-![Evidências da Normalização](SPRINT-2/Desafio/evidencias.png)
+<p>Para solucionar os erros nas relações, utilizei <code>FOREIGN KEY</code> para estabelecer as dependências corretas entre as tabelas, conforme mostrado nas imagens abaixo:</p>
 
-Para detalhar melhor os comandos SQL utilizados na normalização e criação das tabelas, fiz um arquivo de Formas Normais e um diretório com os scripts de criação das tabelas relacionais:
+<img src="/Evidencias/ajuste-relacao-tabelas.png" width="350px" alt="Ajuste de Relação entre as Tabelas">
+<img src="/Evidencias/evidencia-ajuste-relacao.png" width="350px" alt="Evidência do Ajuste de Relação entre as Tabelas">
 
-[Formas Normais e Normalização](SPRINT-2/Desafio/FormasNormais.sql)  
-[Tabelas Relacionais Usadas](SPRINT-2/Desafio/tabelas-relacionais)
+<p>Para detalhar melhor os comandos SQL utilizados na normalização e criação das tabelas, disponibilizei um arquivo que descreve a lógica de aplicação das Formas Normais, assim como um diretório com os scripts de criação das tabelas relacionais:</p>
 
-### Modelagem Dimensional
-Na segunda etapa, converti o modelo relacional em um modelo dimensional. O modelo foi estruturado com a criação das views para cada dimensão: Cliente, Carro, Vendedor, Tempo e Combustível, e a tabela fato (`vw_fatos_locacao`) foi projetada para armazenar métricas essenciais, como quantidade de diárias e valor total. A maior dificuldade foi entender a criação das views e suas respectivas relações, mas após pesquisas e exemplos práticos, consegui criar um modelo dimensional eficiente.
+<ul>
+  <li><a href="SPRINT-2/Desafio/FormasNormais.sql">Formas Normais e Normalização</a></li>
+  <li><a href="SPRINT-2/Desafio/tabelas-relacionais">Tabelas Relacionais Usadas</a></li>
+</ul>
 
----
+<h3>Modelagem Dimensional</h3> 
 
-## Consultas de Exemplos
+<p>Na segunda etapa, converti o modelo relacional em um modelo dimensional. O modelo foi estruturado com a criação de <code>views</code> para cada dimensão: Cliente, Carro, Vendedor, Tempo e Combustível. A tabela fato (<code>vw_fatos_locacao</code>) foi projetada para armazenar métricas como quantidade de diárias e valor total.</p>
 
-Pensei em algumas perguntas que podem ser respondidas com minha tabela fato e dimensões:
+<h2>Perguntas</h2>
 
-1. **Qual é o valor total de locações por vendedor?**
-   - Utiliza a **Dimensão Vendedor** e a **Tabela Fato** para calcular a soma dos valores das locações por vendedor.
+<p>Aqui estão algumas perguntas que podem ser respondidas com a Tabela Fato e as Dimensões:</p>
 
-2. **Quantas diárias foram feitas para cada cliente em determinado período?**
-   - Usa a **Dimensão Cliente** e a **Dimensão Tempo** para agregar o total de diárias por cliente.
+<ol>
+  <li><strong>Qual é o valor total de locações por vendedor?</strong> Usa a Dimensão Vendedor e a Tabela Fato para calcular a soma dos valores das locações por vendedor.</li>
+  <li><strong>Quantas diárias foram feitas para cada cliente em determinado período?</strong> Usa a Dimensão Cliente e a Dimensão Tempo para agregar o total de diárias por cliente.</li>
+  <li><strong>Qual o carro mais alugado e qual seu tipo de combustível?</strong> Usa a Dimensão Carro e a Dimensão Combustível para identificar os carros mais alugados e seus respectivos tipos de combustível.</li>
+  <li><strong>Qual foi o valor total gerado pelas locações em um determinado período?</strong> Usa a Dimensão Tempo e a Tabela Fato para calcular o valor total das locações em um intervalo de tempo.</li>
+  <li><strong>Qual a média de valor de diárias por carro?</strong> Usa a Dimensão Carro e a Tabela Fato para calcular a média do valor das diárias por modelo de carro.</li>
+</ol>
 
-3. **Qual o carro mais alugado e qual seu tipo de combustível?**
-   - Usa a **Dimensão Carro** e a **Dimensão Combustível** para identificar os carros mais alugados e seus respectivos tipos de combustível.
+<h2>Exemplo de criação das views</h2>
 
-4. **Qual foi o valor total gerado pelas locações em um determinado período?**
-   - Utiliza a **Dimensão Tempo** e a **Tabela Fato** para calcular o valor total das locações em um intervalo de tempo.
+<img src="/Evidencias/ev-criação-views.png" width="400px" alt="Criação das Views">
+<img src="/Evidencias/testeviews.png" width="400px" alt="Teste das Views">
 
-5. **Qual a média de valor de diárias por carro?**
-   - Usa a **Dimensão Carro** e a **Tabela Fato** para calcular a média do valor das diárias por modelo de carro.
+<h3>Versões dos modelos</h3>
 
+<p>Aqui estão alguns exemplos de modelos utilizados durante as versões da modelagem da <code>tb_locacao</code>, sendo a última a versão final do projeto:</p>
+
+<img src="/Evidencias/modelagemv1.png" alt="Modelo Versão 1">
+<img src="/Evidencias/modelagemv2.png" alt="Modelo Versão 2">
+<img src="/Evidencias/modelagemv3.png" alt="Modelo Versão 3">
+<img src="/Desafio/Modelo Relacional e Dimensional.png" alt="Modelo Relacional e Dimensional Final">
+<h2> Comentários Finais </h2>
+O desafio foi concluído com sucesso ao normalizar a tabela de locações e transformar o modelo relacional em dimensional. Através das etapas de normalização e da criação de dimensões e tabela fato, foi possível otimizar consultas e eliminar redundâncias, garantindo a integridade e eficiência dos dados para análises futuras.
