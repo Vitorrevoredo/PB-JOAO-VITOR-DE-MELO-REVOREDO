@@ -63,11 +63,11 @@
   <li><strong>Qual a média de valor de diárias por carro?</strong> Usa a Dimensão Carro e a Tabela Fato para calcular a média do valor das diárias por modelo de carro.</li>
 </ol>
 
-<h2>Exemplo de criação das views</h2>
+<h2>Exemplo de criação das e diretorio das views</h2>
 
 <img src="/Sprint-2/Evidencias/ev-criação-views.png" width="400px" alt="Criação das Views">
 <img src="/Sprint-2/Evidencias/testeviews.png" width="400px" alt="Teste das Views">
-
+<li><a href="/Sprint-2/Desafio/views/">Views Utilizadas</a></li>
 <h3>Versões dos modelos</h3>
 
 <p>Aqui estão alguns exemplos de modelos utilizados durante as versões da modelagem da <code>tb_locacao</code>, sendo a última a versão final do projeto:</p>
