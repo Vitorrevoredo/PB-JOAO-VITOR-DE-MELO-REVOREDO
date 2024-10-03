@@ -77,10 +77,10 @@
 <h3>Versões dos modelos</h3>
 <p>Aqui estão alguns exemplos de modelos utilizados durante as versões da modelagem da <code>tb_locacao</code> que sofreram muitas alterações durante o processo, sendo a última a versão final do projeto:</p>
 
-<img src="/Sprint-2/Evidencias/modelagemv1.png" alt="Modelo Versão 1" width="300px" alt="Versão 1 modelagem">
-<img src="/Sprint-2/Evidencias/modelagemv2.png" alt="Modelo Versão 2" width="300px" alt="Versão 2 modelagem">
-<img src="/Sprint-2/Evidencias/modelagemv3.png" alt="Modelo Versão 3" width="300px" alt="Versão 3 modelagem">
-<img src="/Sprint-2/Evidencias/"
+<img src="/Sprint-2/Evidencias/modelagemv1.png" alt="Modelo Versão 1" width="300px">
+<img src="/Sprint-2/Evidencias/modelagemv2.png" alt="Modelo Versão 2" width="300px" >
+<img src="/Sprint-2/Evidencias/modelagemv3.png" alt="Modelo Versão 3" width="300px">
+<img src="/Sprint-2/Evidencias/Modelos.png" alt="Modelo Versão Final" width="300px">
 
 <h2> Comentários Finais </h2>
 O desafio foi concluído com sucesso ao normalizar a tabela de locações e transformar o modelo relacional em dimensional. Através das etapas de normalização e da criação de dimensões e tabela fato, foi possível otimizar consultas e eliminar redundâncias, garantindo a integridade e eficiência dos dados para análises futuras.
