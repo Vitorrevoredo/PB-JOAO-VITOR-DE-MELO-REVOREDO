@@ -71,8 +71,9 @@ As views criadas foram:</p>
 
 <h2> Arquivos das Views Criadas</h2>
 <a href="/Sprint-2/Desafio/views/">Views Utilizadas</a>
-
+<br>
 <strong> - MODELO DIMENSIONAL GERADO</strong>
+<br>
 <img src="/Sprint-2/Desafio/modelo_dimensional.png" width="400px" alt="Modelo Dimensional gerado">
 
 <h2>Perguntas</h2>
