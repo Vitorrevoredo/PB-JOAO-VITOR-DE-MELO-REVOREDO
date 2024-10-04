@@ -101,8 +101,6 @@ A tabela fato  de (<code>locacao</code>) foi projetada para armazenar métricas 
 <img src="/Sprint-2/Evidencias/modelagemv2.png" alt="Modelo Versão 2" width="300px" >
 <img src="/Sprint-2/Evidencias/modelagemv3.png" alt="Modelo Versão 3" width="300px">
 <img src="/Sprint-2/Evidencias/modelo_relacionalv4.png" alt="Modelo Versão 4" width="300px">
-<img src="/Sprint-2/Evidencias/modelagemv5.png" alt="Modelo Versão 4" width="300px">
-<img src="/Sprint-2/Evidencias/modelagemv6.png" alt="Modelo Versão 4" width="300px">
 <img src="/Sprint-2/Evidencias/modelos_finais.png" alt="Modelo Final" width="300px">
 
 <h2> Comentários Finais </h2>
