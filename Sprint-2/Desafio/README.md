@@ -70,7 +70,7 @@ As views criadas foram:</p>
 <img src="/Sprint-2/Evidencias/testeviews.png" width="400px" alt="Teste das Views">
 
 <h2> Arquivos das Views Criadas</h2>
-<a href="/Sprint-2/Desafio/views/">Views Utilizadas</a>
+<a href="/Sprint-2/Desafio/Views/">Views Utilizadas</a>
 <br>
 <strong> - MODELO DIMENSIONAL GERADO</strong>
 <br>
