@@ -29,10 +29,10 @@
 
 <strong> Evidências da Normalização e criação das relações:</strong> Abaixo estão imagens que mostram etapas da criação das tabelas e ajustes das relações:</li>
 
-<img src="/Sprint-2/Evidencias/criação-tabela-clientes-nf2.png" width="400px" alt="Criação da Tabela de Clientes NF2">
-<img src="/Sprint-2/Evidencias/inserindo-dados-tbclientes.png" width="400px" alt="Inserindo Dados na Tabela de Clientes">
-<img src="/Sprint-2/Evidencias/cr-tb-carros.png" width="400px" alt="Criação da Tabela de Carros">
-<img src="/Sprint-2/Evidencias/ajuste-tbcarros.png" width="400px" alt="Ajuste na Tabela de Carros">
+<img src="/Sprint-2/Evidencias/criação-tabela-clientes-nf2.png" width="450px" alt="Criação da Tabela de Clientes NF2">
+<img src="/Sprint-2/Evidencias/inserindo-dados-tbclientes.png" width="450px" alt="Inserindo Dados na Tabela de Clientes">
+<img src="/Sprint-2/Evidencias/cr-tb-carros.png" width="450px" alt="Criação da Tabela de Carros">
+<img src="/Sprint-2/Evidencias/ajuste-tbcarros.png" width="450px" alt="Ajuste na Tabela de Carros">
 
 <p>Para solucionar os erros nas relações, utilizei <code>FOREIGN KEY</code> para estabelecer as dependências corretas entre as tabelas, conforme mostrado nas imagens abaixo:</p>
 
@@ -82,17 +82,17 @@ As views criadas foram:</p>
 <ul>
   <li>Qual vendedor fez o maior valor de locações no período? 
     <br>
-    <img src="/Sprint-2/Evidencias/primeira_pergunta_dim.png" width="350px" alt="Query da primeira pergunta e resultado">
+    <img src="/Sprint-2/Evidencias/primeira_pergunta_dim.png" width="500px" alt="Query da primeira pergunta e resultado">
     <br>
   <strong>A fato de locações (vw_fatos_locacao) com a dimensão de vendedores (vw_dim_vendedor) através do idVendedor. A soma de vlrTotal nos dá o valor total das vendas de cada vendedor, e a ordenação mostra quem fez o maior valor de locações.</strong></li>
   <li>Qual foi o total de locações para um tipo de combustível específico? 
     <br>
-    <img src="/Sprint-2/Evidencias/segunda_pergunta_dim.png" width="350px" alt="Query da segunda pergunta e resultado">
+    <img src="/Sprint-2/Evidencias/segunda_pergunta_dim.png" width="500px" alt="Query da segunda pergunta e resultado">
     <br>
   <strong>A fato de locações (vw_fatos_locacao) e unimos com a dimensão de combustível (vw_dim_combustivel) pelo idcombustivel. Isso permite contar quantas locações foram feitas para carros que utilizam um tipo de combustível específico (como 'Gasolina').</strong></li>
   <li>Qual o valor médio das locações de carros de uma determinada marca?
     <br>
-    <img src="/Sprint-2/Evidencias/terceira_pergunta_dim.png" width="350px" alt="Query da terceira pergunta e resultado">
+    <img src="/Sprint-2/Evidencias/terceira_pergunta_dim.png" width="500px" alt="Query da terceira pergunta e resultado">
     <br>
   <strong>A dimensão de carros (vw_dim_carro) usando o idCarro. Isso nos permite calcular a média do valor das diárias para carros de uma marca específica (exemplo: 'Toyota').</strong></li>
 </ul>
