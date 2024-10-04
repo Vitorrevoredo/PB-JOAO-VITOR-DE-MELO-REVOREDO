@@ -15,6 +15,9 @@
   <li><strong>Entendimento da Estrutura Original:</strong> A tabela original de locações (<code>tb_locacao</code>) incluía informações redundantes sobre clientes, carros, vendedores e locacões, mas de maneira desorganizada. O primeiro passo foi identificar as entidades principais para criar um modelo relacional mais robusto.</li>
   <li><strong>Normalização (1FN, 2FN, 3FN):</strong> Dividi as informações em tabelas menores (dimensões), cada uma focada em uma entidade (Cliente, Carro, Vendedor, Combustível) e percebi que era necessário criar uma <code>locacao</code>, que seria utilizada para armazenar todas as informações de vendas no período, funcionando como uma tabela fato do modelo relacional. Coloquei cada ID das tabelas como <code>FOREIGN KEY</code> na criação das relações.</li>
 </ol>
+<h2> Arquivo da Normalização</h2>
+<p>Para detalhar melhor os comandos SQL utilizados na normalização e criação das tabelas, fiz um arquivo como solicitado que descreve a lógica de aplicação das Formas Normais, assim como um diretório com os scripts de criação das tabelas relacionais:</p>
+  <li><a href="/Sprint-2/Desafio/FormasNormais.sql">Formas Normais e Normalização</a></li>
 
 <p>A ferramenta que usei foi o <strong>DBeaver</strong> para executar os comandos SQL e verificar o funcionamento da normalização. As tabelas criadas foram:</p>
 <ul>
@@ -41,9 +44,6 @@
 <strong>Ao finalizar a modelagem relacional fiz o drop da tb_locacao</strong>
   <img src="/Sprint-2/Evidencias/drop_tb_locacao.png" width="400px">
 
-<h2> Arquivos da Normalização</h2>
-<p>Para detalhar melhor os comandos SQL utilizados na normalização e criação das tabelas, fiz um arquivo como solicitado que descreve a lógica de aplicação das Formas Normais, assim como um diretório com os scripts de criação das tabelas relacionais:</p>
-  <li><a href="/Sprint-2/Desafio/FormasNormais.sql">Formas Normais e Normalização</a></li>
 <h2> Arquivos das Tabelas Criadas</h2>
   <li><a href="/Sprint-2/Desafio/tabelas-relacionais">Tabelas Relacionais Usadas</a></li>
 <strong> - MODELO RELACIONAL GERADO</strong>
