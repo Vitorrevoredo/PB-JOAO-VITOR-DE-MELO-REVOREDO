@@ -81,18 +81,26 @@ As views criadas foram:</p>
 <strong> Exemplos de algumas perguntas que pensei que poderia responder com a Tabela Fato e as Dimensões:</strong>
 <ul>
   <li>Qual vendedor fez o maior valor de locações no período? 
-  A fato de locações (vw_fatos_locacao) com a dimensão de vendedores (vw_dim_vendedor) através do idVendedor. A soma de vlrTotal nos dá o valor total das vendas de cada vendedor, e a ordenação mostra quem fez o maior valor de locações.</li>
+    <br>
+    <img src="/Sprint-2/Evidencias/primeira_pergunta_dim.png" width="350px" alt="Query da primeira pergunta e resultado">
+    <br>
+  <strong>A fato de locações (vw_fatos_locacao) com a dimensão de vendedores (vw_dim_vendedor) através do idVendedor. A soma de vlrTotal nos dá o valor total das vendas de cada vendedor, e a ordenação mostra quem fez o maior valor de locações.</strong></li>
   <li>Qual foi o total de locações para um tipo de combustível específico? 
-  A fato de locações (vw_fatos_locacao) e unimos com a dimensão de combustível (vw_dim_combustivel) pelo idcombustivel. Isso permite contar quantas locações foram feitas para carros que utilizam um tipo de combustível específico (como 'Gasolina').</li>
+    <br>
+    <img src="/Sprint-2/Evidencias/segunda_pergunta_dim.png" width="350px" alt="Query da segunda pergunta e resultado">
+    <br>
+  <strong>A fato de locações (vw_fatos_locacao) e unimos com a dimensão de combustível (vw_dim_combustivel) pelo idcombustivel. Isso permite contar quantas locações foram feitas para carros que utilizam um tipo de combustível específico (como 'Gasolina').</strong></li>
   <li>Qual o valor médio das locações de carros de uma determinada marca?
-  A dimensão de carros (vw_dim_carro) usando o idCarro. Isso nos permite calcular a média do valor das diárias para carros de uma marca específica (exemplo: 'Toyota').</li>
+    <br>
+    <img src="/Sprint-2/Evidencias/terceira_pergunta_dim.png" width="350px" alt="Query da terceira pergunta e resultado">
+    <br>
+  <strong>A dimensão de carros (vw_dim_carro) usando o idCarro. Isso nos permite calcular a média do valor das diárias para carros de uma marca específica (exemplo: 'Toyota').</strong></li>
 </ul>
-<img src="/Sprint-2/Evidencias/primeira_pergunta_dim.png" width="350px" alt="Query da primeira pergunta e resultado">
-<img src="/Sprint-2/Evidencias/segunda_pergunta_dim.png" width="350px" alt="Query da segunda pergunta e resultado">
-<img src="/Sprint-2/Evidencias/terceira_pergunta_dim.png" width="350px" alt="Query da terceira pergunta e resultado">
 
 
-A tabela fato  de (<code>locacao</code>) foi projetada para armazenar métricas como quantidade de diárias total e valor Diarias, e varias outras podem ser geradas com base nas relações das dimensões.
+
+
+<strong>A tabela fato  de (<code>locacao</code>) foi projetada para armazenar métricas como quantidade de diárias total e valor Diarias, e varias outras podem ser geradas com base nas relações das dimensões.</strong>
 
 <h3>Versões das modelagens </h3>
 <p>Aqui estão alguns exemplos de modelos utilizados durante as versões da modelagem da <code>tb_locacao</code> que sofreram muitas alterações durante o processo, sendo a última a versão final do projeto:</p>
