@@ -6,13 +6,18 @@ CREATE TABLE clientes (
     cidadeCliente VARCHAR(40),
     estadoCliente VARCHAR(40),
     paisCliente VARCHAR(40),
-    FOREIGN KEY (idCliente) REFERENCES info_Locacoes(idCliente)
+    FOREIGN KEY (idCliente) REFERENCES locacao(idCliente)
    );
 
 
 INSERT INTO clientes (idCliente, nomeCliente, cidadeCliente, estadoCliente, paisCliente)
 SELECT DISTINCT
-    idCliente, nomeCliente, cidadeCliente, estadoCliente, paisCliente
+    locacao.idCliente, 
+    tb_locacao.nomeCliente, 
+    tb_locacao.cidadeCliente, 
+    tb_locacao.estadoCliente, 
+    tb_locacao.paisCliente
 FROM
-    tb_locacao;
+    tb_locacao
+JOIN locacao ON tb_locacao.idCliente = locacao.idCliente
     

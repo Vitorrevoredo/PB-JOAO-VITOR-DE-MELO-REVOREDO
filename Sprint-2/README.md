@@ -73,7 +73,5 @@
 
 <h2>Comentários Finais</h2>
 
-<p>O desafio foi resolvido com sucesso, resultando em uma estrutura de dados organizada e eficiente para futuras análises e consultas. A aplicação das 3 Formas Normais, seguida pela criação de um modelo dimensional, não apenas melhorou a clareza e a performance do banco de dados, mas também garantiu a integridade dos dados e facilitou a execução de consultas complexas.</p>
-
 <p>A normalização e modelagem de dados foram etapas desafiadoras, mas extremamente enriquecedoras. O processo de eliminação de redundâncias, criação de dimensões e estruturação da tabela fato proporcionou um entendimento mais profundo sobre a importância de uma base de dados bem projetada. Esse aprendizado será fundamental para enfrentar desafios mais complexos em futuros projetos de análise e modelagem de dados.</p>
 

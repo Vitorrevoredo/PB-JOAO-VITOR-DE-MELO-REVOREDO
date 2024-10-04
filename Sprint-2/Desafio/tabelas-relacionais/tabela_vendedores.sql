@@ -5,7 +5,7 @@ CREATE TABLE vendedores (
     nomeVendedor VARCHAR(15),
     sexoVendedor SMALLINT,
     estadoVendedor VARCHAR(40),
-    FOREIGN KEY (idVendedor) REFERENCES info_Locacoes(idVendedor)
+    FOREIGN KEY (idVendedor) REFERENCES locacao(idVendedor)
 );
 
 
