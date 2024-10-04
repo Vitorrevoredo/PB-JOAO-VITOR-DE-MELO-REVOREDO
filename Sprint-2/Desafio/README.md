@@ -84,17 +84,17 @@ As views criadas foram:</p>
     <br>
     <img src="/Sprint-2/Evidencias/primeira_pergunta_dim.png" width="500px" alt="Query da primeira pergunta e resultado">
     <br>
-  <strong>A fato de locações (vw_fatos_locacao) com a dimensão de vendedores (vw_dim_vendedor) através do idVendedor. A soma de vlrTotal nos dá o valor total das vendas de cada vendedor, e a ordenação mostra quem fez o maior valor de locações.</strong></li>
+  <strong> Unindo a fato de locações (vw_fatos_locacao) com a dimensão de vendedores (vw_dim_vendedor) através do idVendedor. A soma de vlrTotal nos dá o valor total das vendas de cada vendedor, e a ordenação mostra quem fez o maior valor de locações.</strong></li>
   <li>Qual foi o total de locações para um tipo de combustível específico? 
     <br>
     <img src="/Sprint-2/Evidencias/segunda_pergunta_dim.png" width="500px" alt="Query da segunda pergunta e resultado">
     <br>
-  <strong>A fato de locações (vw_fatos_locacao) e unimos com a dimensão de combustível (vw_dim_combustivel) pelo idcombustivel. Isso permite contar quantas locações foram feitas para carros que utilizam um tipo de combustível específico (como 'Gasolina').</strong></li>
+  <strong>Com a fato de locações (vw_fatos_locacao) unindo com a dimensão de combustível (vw_dim_combustivel) pelo idcombustivel. Isso permite contar quantas locações foram feitas para carros que utilizam um tipo de combustível específico (como 'Gasolina').</strong></li>
   <li>Qual o valor médio das locações de carros de uma determinada marca?
     <br>
     <img src="/Sprint-2/Evidencias/terceira_pergunta_dim.png" width="500px" alt="Query da terceira pergunta e resultado">
     <br>
-  <strong>A dimensão de carros (vw_dim_carro) usando o idCarro. Isso nos permite calcular a média do valor das diárias para carros de uma marca específica (exemplo: 'Toyota').</strong></li>
+  <strong>Unindo a locacao fato com adimensão de carros (vw_dim_carro) usando o idCarro. Isso nos permite calcular a média do valor das diárias para carros de uma marca específica (exemplo: 'Toyota').</strong></li>
 </ul>
 
 
