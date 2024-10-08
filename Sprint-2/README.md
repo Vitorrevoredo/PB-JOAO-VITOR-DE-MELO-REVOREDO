@@ -67,8 +67,7 @@
 <li><a href="/Sprint-2/Exercicios/exportação-de-dados/">Exercicios Exportação de Dados</a></li>
 
 <h2>Certificados</h2>
-<p>Fiz o Curso da Udemy da trilha que informaram que não era necessario anexar e também optei por fazer outros na propria plataforma que utilizei para estudar, anexo do curso que fiz por fora e da Aws: </p>
-<img src="/Sprint-2/Exercicios/evidencias/Banco de Dados do Zero ao Avançado.jpg" width="400px">
+<p>Fiz o Curso da Udemy da trilha que informaram que não era necessario anexar e também optei por fazer outros na propria plataforma que utilizei para estudar, anexo curso da Aws: </p>
 <li><a href="/Sprint-2/Certificados/Aws partner accreditation (business).pdf">Certificado Aws</a></li>
 
 <h2>Comentários Finais</h2>
