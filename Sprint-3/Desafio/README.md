@@ -99,10 +99,10 @@
 <img src="/Sprint-3/Evidencias/media_preco_categoria.png" width="450px">
 <strong>Numero total de apps por categoria</strong>
 <ul><li>Separei pela Categoria a soma da quantidade de apps</li></ul>
-<img src="/Sprint-3/Evidencias/quantidade_apps_categoria.png width="450px">
+<img src="/Sprint-3/Evidencias/quantidade_apps_categoria.png" width="450px">
 <strong>Média de preço de todos os Apps</strong>
 <ul>Fazendo o tratamento da coluna de preço com <code>preco_tratado = df['Price'].str.replace('$', '').replace('Everyone', '0').astype(float)</code> e a média com o <code>.mean()</code></ul>
-<img src="/Sprint-3/Evidencias/media_preco_todos_apps.png width="500px">
+<img src="/Sprint-3/Evidencias/media_preco_todos_apps.png" width="500px">
 <strong>App mais barato do Dataset</strong>
 <ul>
   <li>Considerando os apps que não são gratuitos, ou seja, valores maiores que 0</li>
