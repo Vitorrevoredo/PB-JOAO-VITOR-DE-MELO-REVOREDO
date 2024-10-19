@@ -109,14 +109,14 @@
   <ul>
     <li>Criei um gráfico de dispersão para analisar a relação entre o preço e o número de reviews, permitindo visualizar como as duas variáveis se comportam juntas.</li>
     <a href="/Sprint-3/Desafio/Graficos gerados/grafico_dispersao.pdf">Baixar gráfico de dispersão em PDF</a> <br>
-    <img src="/Sprint-3/Evidencias/grafico_de_dispersao" width="500px" alt="Gráfico de dispersão">
+    <img src="/Sprint-3/Evidencias/grafico_de_dispersao.png" width="500px" alt="Gráfico de dispersão">
   </ul>
 
   <strong>Gráfico de Linhas:</strong>
   <ul>
     <li>Criei um gráfico de linhas que mostra a evolução do número de apps lançados ao longo dos anos, evidenciando tendências no crescimento do mercado de aplicativos.</li>
     <a href="/Sprint-3/Desafio/Graficos gerados/grafico_linhas.pdf">Baixar gráfico de linhas em PDF</a> <br>
-    <img src="/Sprint-3/Evidencias/grafico_de_linhas" width="500px" alt="Gráfico de linhas">
+    <img src="/Sprint-3/Evidencias/grafico_de_linhas.png" width="500px" alt="Gráfico de linhas">
   </ul>
 
   <h3>Conclusão</h3>
