@@ -3,8 +3,8 @@
 <h2>Desafio: Carguru - Geração Aleatória de Modelos de Carros</h2>
 
 <p><strong>Objetivo</strong>: Criar um container Docker que execute um script Python para gerar aleatoriamente um modelo de carro e exibi-lo na saída.</p>
-<a href="/Sprint/Desafio/Carguru/"> Arquivo carguru python</a> <br>
-<a href="/Sprint/Desafio/Carguru/"> Dockerfile</a> <br>
+<a href="/Sprint-4/Desafio/Carguru/carguru.py"> Arquivo carguru python</a> <br>
+<a href="/Sprint-4/Desafio/Carguru/Dockerfile"> Dockerfile</a> <br>
 
 <h3>Estrutura do Projeto</h3>
 
@@ -64,8 +64,8 @@
 <h2>Desafio: Mascaramento de Dados com SHA-1</h2>
 
 <p><strong>Objetivo</strong>: Criar um script em Python que receba strings de entrada e retorne o hash SHA-1 da string, executando-o dentro de um container Docker.</p>
-<a href="/Sprint/Desafio/Criptografia SHA-1"> Arquivo de mascaramento python</a> <br>
-<a href="/Sprint/Desafio/Criptografia SHA-1"> Dockerfile</a> <br>
+<a href="/Sprint-4/Desafio/Criptografia SHA-1/mascarar.py"> Arquivo de mascaramento python</a> <br>
+<a href="/Sprint-4/Desafio/Criptografia SHA-1/Dockerfile"> Dockerfile</a> <br>
 
 <h3>Estrutura do Projeto</h3>
 
