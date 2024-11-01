@@ -41,7 +41,7 @@
 <p><strong>Exemplo de Construção da Imagem</strong></p>
 <img src="/Sprint-4/Evidencias/build_carguru.png" width="500px" alt="Construção da imagem Carguru">
 
-<p>Em seguida, executei o container:</p>
+<p>Em seguida, para rodar a imagem com a utilização dos containers executei:</p>
 
 <pre><code>docker run --name carguru-container carguru-image</code></pre>
 
@@ -113,14 +113,14 @@ while True:
 
 <h3>3. Construção e Execução da Imagem Docker</h3>
 
-<p>Para construir a imagem, execute:</p>
+<p>Para construir a imagem, executei:</p>
 
 <pre><code>docker build -t mascarar-dados .</code></pre>
 
 <p><strong>Construção da Imagem</strong></p>
 <img src="/Sprint-4/Evidencias/build_mascara_dados.png" width="500px" alt="Criação da imagem mascaramento">
 
-<p>Em seguida, iniciei o container com o modo interativo:</p>
+<p>Em seguida, iniciei o container com o modo interativo, para funcionar da maneira correta:</p>
 
 <pre><code>docker run -it --name mascara-container mascarar-dados</code></pre>
 
