@@ -56,7 +56,7 @@
 <img src="/Sprint-4/Evidencias/execução_carguru.png" width="500px" alt="Teste de execução do container">
 
 <p>Para responder a pergunta da <strong>Segunda Etapa</strong> e mostrar que era possivel reutilizar o mesmo container e gerar novos resultados:</p>
-
+<a href="/Sprint-4/Desafio/README_perguntas.md"> Arquivo em makdown para resonder pergunta</a> <br>
 <pre><code>docker start carguru-container</code></pre>
 
 <img src="/Sprint-4/Evidencias/execuçoes_carguru.png" width="500px" alt="Teste de execuções do container">
