@@ -1,0 +1,4 @@
+docker build -t carguru-image .
+docker run --name carguru-container carguru-image
+docker ps -a
+docker start carguru-container

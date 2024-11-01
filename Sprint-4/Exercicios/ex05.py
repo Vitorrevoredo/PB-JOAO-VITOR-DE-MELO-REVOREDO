@@ -1,4 +1,4 @@
-def processar_notas(arquivo_csv):
+def processo_notas(arquivo_csv):
     with open(arquivo_csv) as file:
         linhas = file.readlines() #abri e ler o arquivo csv
         resultados = []
@@ -14,4 +14,4 @@ def processar_notas(arquivo_csv):
         print(f"Nome: {nome} Notas: [{notas[0]}, {notas[1]}, {notas[2]}] Média: {media}") #print da lista
 
 # Chama a função com o arquivo 'estudantes.csv'
-processar_notas('estudantes.csv')
+processo_notas('estudantes.csv')

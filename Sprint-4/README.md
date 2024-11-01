@@ -48,13 +48,16 @@
   <li><a href="/Sprint-4/Execicios/">Exercícios python</a></li>
 
 <h2>Evidências de Conclusão</h2>
-<p>Coloquei as capturas de tela principais em anexo para evidenciar o progresso e a execução dos exercicios.</p>
+<p>Coloquei a evidencia de conclusáo em anexo para evidenciar a execução dos exercicios.</p>
+ <img src="/Sprint-4/Exercicios/Evidencias/conclusao_ex.png" width="350px" alt="Evidência de conclusão">
 
 <hr>
 
 <h2>Certificados</h2>
 <p>Concluí cursos específicos para aprimorar meus conhecimentos em Docker e Python, essenciais para o desenvolvimento desta Sprint e o curso em Aws, que anexei o certificado.</p>
-
+<ul>
+    <li>=<a href="/Sprint-4/Certificados">Certificado AWS</a></li>
+</ul>
 <hr>
 
 <h2>Comentários Finais</h2>

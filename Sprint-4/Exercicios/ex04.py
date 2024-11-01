@@ -1,4 +1,4 @@
-def calcular_valor_maximo(operadores, operandos):
+def calculo_valor_maximo(operadores, operandos):
     operacoes = {
         '+': lambda a, b: a + b,
         '-': lambda a, b: a - b,
@@ -8,12 +8,12 @@ def calcular_valor_maximo(operadores, operandos):
     }
     
     # Aplicar as operações sobre os operandos
-    resultados = map(lambda op: operacoes[op[0]](op[1][0], op[1][1]), zip(operadores, operandos))
+    resultado_calculo = map(lambda op: operacoes[op[0]](op[1][0], op[1][1]), zip(operadores, operandos))
     
     # Retornar o maior valor
-    return max(resultados)
+    return max(resultado_calculo)
 
 operadores = ['+', '-', '*', '/', '+']
 operandos  = [(3, 6), (-7, 4.9), (8, -8), (10, 2), (8, 4)]
-resultado = calcular_valor_maximo(operadores, operandos)
+resultado = calculo_valor_maximo(operadores, operandos)
 print(resultado)
