@@ -45,7 +45,7 @@
 
 <h2>Exercícios Resolvidos</h2>
 <p>Para cada exercício, criei pastas individuais com os scripts python e suas saidas esperadas:</p>
-  <li><a href="/Sprint-4/Execicios/">Exercícios python</a></li>
+  <li><a href="/Sprint-4/Exercicios/">Exercícios python</a></li>
 
 <h2>Evidências de Conclusão</h2>
 <p>Coloquei a evidencia de conclusáo em anexo para evidenciar a execução dos exercicios.</p>
