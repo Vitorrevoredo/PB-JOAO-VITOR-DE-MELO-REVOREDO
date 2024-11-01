@@ -26,7 +26,7 @@
 <p>O <strong>Dockerfile</strong> foi configurado com as seguintes instruções:</p>
 
 <ul>
-    <li><strong>Imagem base</strong>: <code>FROM python</code></li>
+    <li><strong>Imagem base</strong>: <code>FROM python</code> que usa como padrão a ultima versão python</li>
     <li><strong>Define o diretório de trabalho</strong>: <code>WORKDIR /app</code></li>
     <li><strong>Copia o script Python para o container</strong>: <code>COPY carguru.py .</code></li>
     <li><strong>Comando para executar o script Python</strong>: <code>CMD ["python", "carguru.py"]</code></li>
