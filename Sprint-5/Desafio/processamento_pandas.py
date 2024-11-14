@@ -16,18 +16,10 @@ df = pd.read_csv(StringIO(csv_data), sep=';')
 print("Primeiras linhas dos dados:")
 print(df.head())
 
-# Verificar o tipo de dados das colunas 'PU' e 'Quantidade'
-print("\nTipos de dados das colunas antes de conversão:")
-print(df.dtypes)
-
 # Limpeza dos dados: converter 'PU', 'Quantidade' e 'Valor' para valores numéricos
 df['PU'] = pd.to_numeric(df['PU'].str.replace(',', '.', regex=False), errors='coerce')
 df['Quantidade'] = pd.to_numeric(df['Quantidade'].str.replace(',', '.', regex=False), errors='coerce')
 df['Valor'] = pd.to_numeric(df['Valor'].str.replace(',', '.', regex=False), errors='coerce')
-
-# Verificar novamente os tipos de dados
-print("\nTipos de dados das colunas após conversão:")
-print(df.dtypes)
 
 # Verificar se há valores ausentes nas colunas 'PU' e 'Quantidade'
 print("\nValores ausentes nas colunas 'PU' e 'Quantidade':")
