@@ -11,9 +11,9 @@
   <img src="/Sprint-5/Evidencias/criando_usuario_iam.png" width="500px" alt="Usuário IAM criado"> <br>
  <p>Após criar o usuário, criei um grupo de usuários para aplicar as permissões de acesso necessárias. Além disso, ativei o <strong>MFA</strong> (autenticação multifatorial) para aumentar a segurança da conta. Durante a criação do grupo, concedi a permissão <code>AmazonS3FullAccess</code> para garantir acesso total ao S3. Em seguida, adicionei meu usuário ao grupo e configurei as credenciais de acesso no terminal para estabelecer a conexão com a AWS.</p>
    <p>Com as configurações feitas, realizei alguns testes de conexão utilizando os comandos <code>aws s3 ls</code> e <code>aws sts get-caller-identity</code>, que devem listar os buckets criados e testar a conexão, respectivamente. Durante os testes, encontrei erros de permissão relacionados às Políticas de Controle de Serviços (SCPs), que afetam a capacidade de gerenciar usuários. Pesquisando mais sobre o assunto, descobri que as SCPs são aplicadas no nível da conta ou unidade organizacional e possuem uma política de negação implícita. Como não era possível aplicar as permissões, o time técnico da Compass sugeriu o uso de chaves temporárias para realizar as operações necessárias. Refiz o processo de configuração aplicando as chaves de acesso já fornecidas na minha conta aws.</p>
-  <img src="/Sprint-5/Evidencias/erro_aws_conexao.png" width="500px" alt="Erros nas permissões AWS"> <br>
-  <img src="/Sprint-5/Evidencias/conexao_chaves_temp.png" width="500px" alt="Conexão estabelecida"> <br>
+  <img src="/Sprint-5/Evidencias/erro_aws_conexão.png" width="500px" alt="Erros nas permissões AWS"> <br>
   <img src="/Sprint-5/Evidencias/acesso_s3.png" width="400px" alt="Acesso ao S3 para meu usuário"> <br>
+  <img src="/Sprint-5/Evidencias/conexao_chaves_temp.png" width="500px" alt="Conexão estabelecida"> <br>
   <img src="/Sprint-5/Evidencias/chaves_de_acesso.png" width="500px" alt="Chaves de acesso padrão"> <br>
 
 
