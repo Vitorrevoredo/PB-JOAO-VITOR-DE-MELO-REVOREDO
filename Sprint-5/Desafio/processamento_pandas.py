@@ -10,7 +10,7 @@ output_file = 'C:/Users/Vitor/Documents/trabalho/PB-JOAO-VITOR-DE-MELO-REVOREDO/
 # Conectando ao S3 e lendo o arquivo
 s3 = boto3.client('s3')
 csv_data = s3.get_object(Bucket=bucket_name, Key=file_name)['Body'].read().decode('utf-8')
-df = pd.read_csv(StringIO(csv_data), sep=';')
+df = pd.read_csv(StringIO(csv_data), sep=';', on_bad_lines="skip")
 
 # Inspecionar as primeiras linhas do DataFrame
 print("Primeiras linhas dos dados:")

@@ -63,12 +63,14 @@
 <h2>Resultados</h2>
 <ul>
   <li><strong>Vendas Filtradas</strong>: Os dados filtrados incluem apenas vendas com <strong>PU > 1000</strong> e <strong>Quantidade < 50</strong>, oferecendo um conjunto específico de transações para análise detalhada.</li>
-  <li><strong>Média do PU</strong>: A média do <strong>PU</strong> foi calculada como <strong>(valor calculado)</strong>, representando o preço médio unitário das vendas.</li>
-  <li><strong>Soma do Valor</strong>: A soma total das vendas foi <strong>(valor calculado)</strong>, destacando o volume financeiro das transações.</li>
+  <li><strong>Média do PU</strong>: A média do <strong>PU</strong> foi calculada como <strong>1784.9416297097412</strong>, representando o preço médio unitário das vendas.</li>
+  <li><strong>Soma do Valor</strong>: A soma total das vendas foi <strong>576858102.46</strong>, destacando o volume financeiro das transações.</li>
   <li><strong>Categorização de Vendas</strong>: Cada venda foi classificada como "Alto" ou "Baixo", com base no <code>Valor</code>, possibilitando a identificação de vendas de alto valor.</li>
   <li><strong>Análise Temporal</strong>: A extração do ano permitiu identificar tendências e comportamentos nas vendas ao longo dos anos.</li>
   <li><strong>Padronização de Títulos</strong>: Os valores de <code>Tipo Título</code> foram uniformizados em maiúsculas para evitar inconsistências nas análises.</li>
 </ul>
+  <img src="/Sprint-5/Evidencias/processamento_dados.png" width="500px" alt="Processamento dados"> <br>
+
 
 <h2>Conclusão</h2>
 <p>Com a análise dos dados de vendas de títulos do Tesouro Direto, foi possível identificar informações relevantes sobre preços e volumes de vendas, como vendas de alto valor e padrões anuais. A integração com o AWS S3 demonstrou-se eficiente para armazenamento e manipulação de grandes volumes de dados. O uso de ferramentas como o <strong>AWS CLI</strong>, <strong>boto3</strong> e <strong>Pandas</strong> facilitou o acesso, a limpeza e a análise dos dados. As etapas de filtro, conversão e agregação permitiram transformar o conjunto bruto em dados mais organizados e informativos para análises futuras.</p>
