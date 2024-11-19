@@ -1,5 +1,14 @@
+<h1>README - Sprint da utilização do s3 com python</h1>
+  
+  <h2>Objetivos da Sprint</h2>
+<ul>
+    <li>Praticar comandos python </li>
+    <li>Utilizar o serviço s3 da AWS para criação de um ambiente de armazenamento de objetos<li>
+    <li>Explorar o tratamento de dados para simular diferentes execuções de script.</li>
+</ul>
 
-  <h1>Projeto de Hospedagem de Site Estático no Amazon S3</h1>
+  
+  <h1><strong>Exercicicio</strong> Projeto de Hospedagem de Site Estático no Amazon S3</h1>
 
   <p>Este exercício teve como objetivo a hospedagem de um site estático na Amazon Web Services (AWS) usando o serviço <strong>Amazon S3</strong>. O site consiste em um simples <code>index.html</code> e um documento de erro personalizado <code>404.html</code>. A hospedagem é configurada para permitir acesso público, com um documento de índice padrão e um documento de erro para páginas não encontradas.</p>
 
@@ -93,3 +102,14 @@
 
   <h2>Conclusão</h2>
   <p>Após completar estas etapas, o site estará hospedado no Amazon S3 e acessível publicamente. O serviço S3 permite que você armazene e entregue conteúdo estático de maneira altamente escalável, e sua integração com outros serviços da AWS pode permitir funcionalidades avançadas, como distribuição de conteúdo através do Amazon CloudFront ou análise de tráfego através do AWS CloudWatch.</p>
+
+
+<h2>Certificados</h2>
+<p>Concluí cursos específicos para aprimorar meus conhecimentos em Docker e Python, essenciais para o desenvolvimento desta Sprint e o curso em Aws, que anexei o certificado.</p>
+<ul>
+    <li>=<a href="/Sprint-5/Certificados">Certificado AWS</a></li>
+</ul>
+<hr>
+
+<h2>Comentários Finais</h2> 
+<p>A Sprint proporcionou um aprendizado significativo na manipulação, análise de dados e armazenamento com AWS s3, destacando a importância de tratar erros comuns, como inconsistências em arquivos CSV. A prática reforçou a necessidade de validar dados antes do processamento e explorar estratégias eficientes para resolução de problemas. Esses conhecimentos são essenciais para garantir a integridade e qualidade em projetos futuros de ciência de dados.</p>
