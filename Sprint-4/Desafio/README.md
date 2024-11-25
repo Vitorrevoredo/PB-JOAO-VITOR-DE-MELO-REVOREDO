@@ -3,8 +3,8 @@
 <h2>Desafio: Carguru - Geração Aleatória de Modelos de Carros</h2>
 
 <p><strong>Objetivo</strong>: Criar um container Docker que execute um script Python para gerar aleatoriamente um modelo de carro e exibi-lo na saída.</p>
-<a href="/Sprint-4/Desafio/Carguru/carguru.py"> Arquivo carguru python</a> <br>
-<a href="/Sprint-4/Desafio/Carguru/Dockerfile"> Dockerfile</a> <br>
+<a href="../Desafio/Carguru/carguru.py"> Arquivo carguru python</a> <br>
+<a href="../Desafio/Carguru/Dockerfile"> Dockerfile</a> <br>
 
 <h3>Estrutura do Projeto</h3>
 
@@ -39,33 +39,33 @@
 <pre><code>docker build -t carguru-image .</code></pre>
 
 <p><strong>Exemplo de Construção da Imagem</strong></p>
-<img src="/Sprint-4/Evidencias/build_carguru.png" width="500px" alt="Construção da imagem Carguru">
+<img src="../Evidencias/build_carguru.png" width="500px" alt="Construção da imagem Carguru">
 
 <p>Em seguida, para rodar a imagem com a utilização dos containers executei:</p>
 
 <pre><code>docker run --name carguru-container carguru-image</code></pre>
 
 <p><strong>Exemplo de Execução do Container</strong></p>
-<img src="/Sprint-4/Evidencias/teste_carguru.png" width="700px" alt="Execução do container com base na imagem Docker">
+<img src="../Evidencias/teste_carguru.png" width="700px" alt="Execução do container com base na imagem Docker">
 
 <p>Para visualizar containers que já finalizaram a execução:</p>
 
 <pre><code>docker ps -a</code></pre>
 
 <p><strong>Exemplo de Listagem de Containers Finalizados</strong></p>
-<img src="/Sprint-4/Evidencias/execução_carguru.png" width="500px" alt="Teste de execução do container">
+<img src="../Evidencias/execução_carguru.png" width="500px" alt="Teste de execução do container">
 
 <p>Para responder a pergunta da <strong>Segunda Etapa</strong> e mostrar que era possivel reutilizar o mesmo container e gerar novos resultados:</p>
-<a href="/Sprint-4/Desafio/README_perguntas.md"> Arquivo em makdown para responder perguntas</a> <br>
+<a href="../Desafio/README_perguntas.md"> Arquivo em makdown para responder perguntas</a> <br>
 <pre><code>docker start carguru-container</code></pre>
 
-<img src="/Sprint-4/Evidencias/execuçoes_carguru.png" width="500px" alt="Teste de execuções do container">
+<img src="../Evidencias/execuçoes_carguru.png" width="500px" alt="Teste de execuções do container">
 
 <h2>Desafio: Mascaramento de Dados com SHA-1</h2>
 
 <p><strong>Objetivo</strong>: Criar um script em Python que receba strings de entrada e retorne o hash SHA-1 da string, executando-o dentro de um container Docker.</p>
-<a href="/Sprint-4/Desafio/Criptografia SHA-1/mascarar.py"> Arquivo de mascaramento python</a> <br>
-<a href="/Sprint-4/Desafio/Criptografia SHA-1/Dockerfile"> Dockerfile</a> <br>
+<a href="../Desafio/Criptografia SHA-1/mascarar.py"> Arquivo de mascaramento python</a> <br>
+<a href="../Desafio/Criptografia SHA-1/Dockerfile"> Dockerfile</a> <br>
 
 <h3>Estrutura do Projeto</h3>
 
@@ -118,21 +118,21 @@ while True:
 <pre><code>docker build -t mascarar-dados .</code></pre>
 
 <p><strong>Construção da Imagem</strong></p>
-<img src="/Sprint-4/Evidencias/build_mascara_dados.png" width="500px" alt="Criação da imagem mascaramento">
+<img src="../Evidencias/build_mascara_dados.png" width="500px" alt="Criação da imagem mascaramento">
 
 <p>Em seguida, iniciei o container com o modo interativo, para funcionar da maneira correta:</p>
 
 <pre><code>docker run -it --name mascara-container mascarar-dados</code></pre>
 
 <p><strong>Exemplo de Erro ao Executar sem Interatividade</strong></p>
-<img src="/Sprint-4/Evidencias/erro_mascarar_dados.png" width="500px" alt="Teste do mascaramento">
+<img src="../Evidencias/erro_mascarar_dados.png" width="500px" alt="Teste do mascaramento">
 
 <p>Para reutilizar o container e gerar novos hashes:</p>
 
 <pre><code>docker start -i mascara-container</code></pre>
-<img src="/Sprint-4/Evidencias/start_mascara.png" width="500px" alt="Solução do mascaramento">
+<img src="../Evidencias/start_mascara.png" width="500px" alt="Solução do mascaramento">
 <p><strong>Exemplo de Uso</strong></p>
-<img src="/Sprint-4/Evidencias/teste_container_mascara.png" width="500px" alt="Solução do mascaramento">
+<img src="../Evidencias/teste_container_mascara.png" width="500px" alt="Solução do mascaramento">
 
 <h3>Conclusão</h3> 
 <p>Esses desafios foram fundamentais para reforçar o aprendizado em Docker e Python. A prática de criar containers para executar scripts mostrou como é fácil e eficiente isolar aplicações, garantindo que funcionem de forma consistente em qualquer ambiente.</p> <p>Além disso, aprendi a importância de automatizar processos e a utilizar ferramentas modernas, o que facilita o desenvolvimento e aumenta a segurança dos dados. Essa experiência é um passo importante para projetos futuros mais complexos e escaláveis.</p>
