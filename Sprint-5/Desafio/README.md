@@ -7,20 +7,20 @@
 <ol>
   <li><strong>Criação do Usuário IAM e Configuração do AWS CLI</strong></li>
   <p>Para estabelecer a conexão com o bucket do S3, instalei o <strong>AWS CLI</strong>, que permite interagir com os serviços da AWS diretamente pelo terminal, sem precisar acessar o Console de Gerenciamento. Fui instruído a criar um usuário IAM, necessário para gerar as Credenciais de Acesso (Access Key ID: identificador único da chave de acesso e Secret Access Key: chave secreta associada ao Access Key ID), essenciais para gerenciar os recursos da AWS. Com isso, iniciei a criação do meu usuário.</p>
-  <img src="/Sprint-5/Evidencias/criando_user_iam.png" width="500px" alt="Nenhum usuário criado"> <br>
-  <img src="/Sprint-5/Evidencias/criando_usuario_iam.png" width="500px" alt="Usuário IAM criado"> <br>
+  <img src="../Evidencias/criando_user_iam.png" width="500px" alt="Nenhum usuário criado"> <br>
+  <img src="../Evidencias/criando_usuario_iam.png" width="500px" alt="Usuário IAM criado"> <br>
  <p>Após criar o usuário, criei um grupo de usuários para aplicar as permissões de acesso necessárias. Além disso, ativei o <strong>MFA</strong> (autenticação multifatorial) para aumentar a segurança da conta. Durante a criação do grupo, concedi a permissão <code>AmazonS3FullAccess</code> para garantir acesso total ao S3. Em seguida, adicionei meu usuário ao grupo e configurei as credenciais de acesso no terminal para estabelecer a conexão com a AWS.</p>
    <p>Com as configurações feitas, realizei alguns testes de conexão utilizando os comandos <code>aws s3 ls</code> e <code>aws sts get-caller-identity</code>, que devem listar os buckets criados e testar a conexão, respectivamente. Durante os testes, encontrei erros de permissão relacionados às Políticas de Controle de Serviços (SCPs), que afetam a capacidade de gerenciar usuários. Pesquisando mais sobre o assunto, descobri que as SCPs são aplicadas no nível da conta ou unidade organizacional e possuem uma política de negação implícita. Como não era possível aplicar as permissões, o time técnico da Compass sugeriu o uso de chaves temporárias para realizar as operações necessárias. Refiz o processo de configuração aplicando as chaves de acesso já fornecidas na minha conta aws.</p>
-  <img src="/Sprint-5/Evidencias/erro_aws_conexão.png" width="500px" alt="Erros nas permissões AWS"> <br>
-  <img src="/Sprint-5/Evidencias/acesso_s3.png" width="400px" alt="Acesso ao S3 para meu usuário"> <br>
-  <img src="/Sprint-5/Evidencias/conexao_chaves_temp.png" width="500px" alt="Conexão estabelecida"> <br>
-  <img src="/Sprint-5/Evidencias/chaves_de_acesso.png" width="500px" alt="Chaves de acesso padrão"> <br>
+  <img src="../Evidencias/erro_aws_conexão.png" width="500px" alt="Erros nas permissões AWS"> <br>
+  <img src="../Evidencias/acesso_s3.png" width="400px" alt="Acesso ao S3 para meu usuário"> <br>
+  <img src="../Evidencias/conexao_chaves_temp.png" width="500px" alt="Conexão estabelecida"> <br>
+  <img src="../Evidencias/chaves_de_acesso.png" width="500px" alt="Chaves de acesso padrão"> <br>
 
 
   <li><strong>Bucket s3 </strong></li>
   <p>Para armazenar o arquivo de dados no S3, criei um bucket usando a interface AWS. Nomeei o bucket como <strong>bucket-desafio-vitor</strong>, pois cada bucket requer um nome único. As permissões foram configuradas para garantir upload e leitura dos arquivos. Ao finalizar o Desafio exclui o bucket.</p>
-  <img src="/Sprint-5/Evidencias/criando_bucket_s3.png" width="500px" alt="Bucket s3"> <br>
-  <img src="/Sprint-5/Evidencias/excluindo_bucket.png" width="500px" alt="Excluindo bucket aws"> <br>
+  <img src="../Evidencias/criando_bucket_s3.png" width="500px" alt="Bucket s3"> <br>
+  <img src="../Evidencias/excluindo_bucket.png" width="500px" alt="Excluindo bucket aws"> <br>
 
 
   <li><strong>Escolha e Estrutura do Conjunto de Dados</strong></li>
@@ -36,9 +36,9 @@
 
   <li><strong>Implementação do Script de Upload em Python para Conexão com o S3</strong></li>
   <p>Após a configuração do ambiente, desenvolvi um script Python usando a biblioteca <strong>boto3</strong>, que permite interagir com o S3. O script define as configurações do cliente S3 e faz o upload do arquivo <code>VendasTesouroDireto.csv</code> do diretório local para o bucket S3 configurado. Adicionei comentários explicando cada etapa do código.</p>
-  <a href="/Sprint-5/Desafio/s3_upload_script.py">Acesse o arquivo de upload</a> <br>
-  <img src="/Sprint-5/Evidencias/envio_arquivo.png" width="500px" alt="Envio arquivo para o bucket"> <br>
-  <img src="/Sprint-5/Evidencias/teste_upload_arquivo_concluido.png" width="500px" alt="Envio arquivo para o bucket"> <br>
+  <a href="../Desafio/s3_upload_script.py">Acesse o arquivo de upload</a> <br>
+  <img src="../Evidencias/envio_arquivo.png" width="500px" alt="Envio arquivo para o bucket"> <br>
+  <img src="../Evidencias/teste_upload_arquivo_concluido.png" width="500px" alt="Envio arquivo para o bucket"> <br>
 
 
   <li><strong>Script de Manipulação de Arquivo CSV</strong></li>
@@ -51,13 +51,13 @@
     <li><strong>Conversão de Datas</strong>: Converti a coluna <code>Data Venda</code> para o formato <strong>datetime</strong>, permitindo análises temporais e extração do ano da venda.</li>
     <li><strong>Normalização de Textos</strong>: Padronizei os valores de <code>Tipo Título</code> para maiúsculas, garantindo consistência na categorização dos títulos.</li>
   </ul>
-   <a href="/Sprint-5/Desafio/processamento_pandas.py">Acesse o arquivo de tratamento de dados</a> <br>
-   <img src="/Sprint-5/Evidencias/upload_arquivo_modificado.png" width="500px" alt="Envio arquivo para o bucket"> <br>
+   <a href="../Desafio/processamento_pandas.py">Acesse o arquivo de tratamento de dados</a> <br>
+   <img src="../Evidencias/upload_arquivo_modificado.png" width="500px" alt="Envio arquivo para o bucket"> <br>
 
    <li>Erros exemplos na manipulação dos dados que encontrei</li>
-  <img src="/Sprint-5/Evidencias/erro_tratamento_dados.png" width="500px" alt="Erros manipulação 1"> <br>
-  <img src="/Sprint-5/Evidencias/erro_tratamento_dados2.png" width="500px" alt="Erros manipulação 2"> <br>
-  <img src="/Sprint-5/Evidencias/resolvendo_erro_tratamento_dados.png" width="500px" alt="Erros resolvido"> <br>
+  <img src="../Evidencias/erro_tratamento_dados.png" width="500px" alt="Erros manipulação 1"> <br>
+  <img src="../Evidencias/erro_tratamento_dados2.png" width="500px" alt="Erros manipulação 2"> <br>
+  <img src="../Evidencias/resolvendo_erro_tratamento_dados.png" width="500px" alt="Erros resolvido"> <br>
 </ol>
 
 <h2>Resultados</h2>
@@ -69,7 +69,7 @@
   <li><strong>Análise Temporal</strong>: A extração do ano permitiu identificar tendências e comportamentos nas vendas ao longo dos anos.</li>
   <li><strong>Padronização de Títulos</strong>: Os valores de <code>Tipo Título</code> foram uniformizados em maiúsculas para evitar inconsistências nas análises.</li>
 </ul>
-  <img src="/Sprint-5/Evidencias/processamento_dados.png" width="500px" alt="Processamento dados"> <br>
+  <img src="../Evidencias/processamento_dados.png" width="500px" alt="Processamento dados"> <br>
 
 
 <h2>Conclusão</h2>
