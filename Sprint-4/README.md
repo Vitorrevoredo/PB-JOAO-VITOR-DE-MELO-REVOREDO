@@ -45,18 +45,18 @@
 
 <h2>Exercícios Resolvidos</h2>
 <p>Para cada exercício, criei pastas individuais com os scripts python e suas saidas esperadas:</p>
-  <li><a href="/Sprint-4/Exercicios/">Exercícios python</a></li>
+  <li><a href="../Exercicios/">Exercícios python</a></li>
 
 <h2>Evidências de Conclusão</h2>
 <p>Coloquei a evidencia de conclusáo em anexo para evidenciar a execução dos exercicios.</p>
- <img src="/Sprint-4/Exercicios/Evidencias/conclusao_ex.png" width="350px" alt="Evidência de conclusão">
+ <img src="../Exercicios/Evidencias/conclusao_ex.png" width="350px" alt="Evidência de conclusão">
 
 <hr>
 
 <h2>Certificados</h2>
 <p>Concluí cursos específicos para aprimorar meus conhecimentos em Docker e Python, essenciais para o desenvolvimento desta Sprint e o curso em Aws, que anexei o certificado.</p>
 <ul>
-    <li>=<a href="/Sprint-4/Certificados">Certificado AWS</a></li>
+    <li>=<a href="../Certificados">Certificado AWS</a></li>
 </ul>
 <hr>
 
