@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 from dotenv import load_dotenv
 
+# Carregamento das Variáveis de Ambiente
 load_dotenv()
 
 def upload_s3(nome_bucket, arquivo_local_path, raw_zone_path):
@@ -15,7 +16,7 @@ def upload_s3(nome_bucket, arquivo_local_path, raw_zone_path):
     s3.upload_file(arquivo_local_path, nome_bucket, s3_caminho)
     print(f"Arquivo {nome_arquivo} enviado para {nome_bucket}/{s3_caminho}")
     
-# Config
+# Configurações e Chamadas da Função
 nome_bucket = "vitor-data-lake"
 raw_zone_path_movies = "Raw/Local/CSV/Movies"
 raw_zone_path_series = "Raw/Local/CSV/Series"

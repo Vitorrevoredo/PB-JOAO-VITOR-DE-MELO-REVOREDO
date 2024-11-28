@@ -1,3 +1,30 @@
+<h1>README - Sprint do envio de arquivos para o Aws s3, utilizando python e Docker</h1>
+ <h2>Instruções</h2>
+<p> Essa Sprint </p>
+
+
+
+ <h2>Objetivos da Sprint</h2>
+ 
+
+
+
+
+
+ <h2>Informações</h2>
+
+
+
+
+
+
+
+ <h2>Anotações</h2>
+
+
+
+
+ <h2>Exercícios</h2>
  <h1>Resolvendo Problemas de Permissão no Lambda</h1>
   <p>
   Sprint passada como tive um problema de acesso com o aws CLI já imaginava que o erro de permissão fosse algo relacionado ao IAM e li a documentação para tentar solucionar o problema pois durante a execução da minha função Lambda, encontrei o seguinte erro:
@@ -21,3 +48,12 @@
   <p>
     Após salvar as alterações, minha função Lambda conseguiu acessar o bucket <code>exercicio-vitor</code> sem mais problemas.
   </p>
+<h2>Certificados</h2>
+<p>Realizei os cursos da AWS para aprimorar meu conhecimento nos serviços disponiveis na nuvem, Segue em anexo:</p>
+<ul>
+  <li><a href="/Sprint-6/Certificados">Certificado AWS</a></li>
+</ul>
+
+
+
+<h2>Comentários Finais</h2>
