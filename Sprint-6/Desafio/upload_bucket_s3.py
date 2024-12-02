@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 # Carregamento das Variáveis de Ambiente
 load_dotenv()
 
-def upload_s3(nome_bucket, arquivo_local_path, raw_zone_path):
+def upload_bucket_s3(nome_bucket, arquivo_local_path, raw_zone_path):
     s3 = boto3.client('s3', region_name='us-east-1')
     
     data_atual = datetime.now().strftime('%Y/%m/%d')
@@ -26,6 +26,6 @@ local_arquivo_movies = "/app/Filmes+e+Series/movies.csv"
 local_arquivo_series = "/app/Filmes+e+Series/series.csv"
 
 # Envio dos arquivos para o S3
-upload_s3(nome_bucket, local_arquivo_movies, raw_zone_path_movies)
-upload_s3(nome_bucket, local_arquivo_series, raw_zone_path_series)
+upload_bucket_s3(nome_bucket, local_arquivo_movies, raw_zone_path_movies)
+upload_bucket_s3(nome_bucket, local_arquivo_series, raw_zone_path_series)
 

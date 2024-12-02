@@ -6,5 +6,5 @@ COPY . .
 
 RUN pip install boto3 pandas python-dotenv
 
-CMD ["python", "upload_s3.py"]
+CMD ["python", "upload_bucket_s3.py"]
 
