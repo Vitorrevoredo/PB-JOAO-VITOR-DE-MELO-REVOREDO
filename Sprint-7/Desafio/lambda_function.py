@@ -78,12 +78,12 @@ def processar_dados_em_pedacos(s3_handler: S3Handler):
 
         # Processa dados do lote
         for row in batch:
-            dados_processados.append(row)  # Processamento do CSV (enriquecimento pode ser adicionado aqui)
+            dados_processados.append(row)  # Processamento do CSV
 
         # Salve após processar cada bloco para reduzir o uso de memória
         if dados_processados:
             s3_handler.save_json_to_s3(dados_processados, f'movies_processed_part_{i+1}')
-            dados_processados.clear()  # Limpar a lista após salvar para economizar memória
+            dados_processados.clear()  # Limpa a lista após salvar para economizar memória
 
     print("Processamento do arquivo CSV concluído.")
 
