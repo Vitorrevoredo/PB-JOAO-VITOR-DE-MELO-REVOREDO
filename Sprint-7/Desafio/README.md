@@ -60,5 +60,19 @@
 <img src="../Evidencias/arquivo_json.png" width="500px" alt="Estrutura formada">  
 <p>Arquivos JSON com dados complementares estão prontos para serem utilizados nas etapas seguintes do projeto.</p>
 
+<h2>Explicação das perguntas para Análise dos Dados</h2>  
+<ol>  
+  <li>Quais artistas (atores ou diretores) têm mais obras conhecidas nos gêneros Comédia e Animação?</li>
+   <strong>Minha ideia é cruzar os dados obtidos da TMDb (como elencos e diretores de filmes) com os gêneros indicados nos arquivos CSV ou retornos da API.</strong>
+  <li>Quais anos apresentaram o maior número de lançamentos em comédia e animação?</li>
+  <strong>Minha ideia é identificar picos de popularidade ou produção de conteúdos nesses gêneros.</strong>
+  <li>Quais filmes ou séries de comédia e animação têm o maior número de votos em relação à nota média?</li> 
+  <strong>Os retornos da API TMDb incluem métricas como vote_count e vote_average.</strong>
+  <li>Qual é o tempo médio de duração de filmes de comédia em comparação com animações?</li> 
+  <strong>Explorar peculiaridades de ambos os gêneros e identificar tendências.</strong>
+</ol>  
+
+
+
 <h2>Conclusão</h2>
 <p>Essa etapa permitiu ampliar a qualidade dos dados disponíveis para análise posterior. O foco nas boas práticas de armazenamento e segurança manteve a organização necessária no Data Lake.</p>
