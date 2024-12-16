@@ -92,6 +92,17 @@ registros_por_ano.show()</code></pre>
 <img src="../Sprint-7/Exercicios/Aws Glue/Evidencias/executando_crawler.png" width="450px" alt="Executando crawler">
 <img src="../Sprint-7/Exercicios/Aws Glue/Evidencias/query_athena.png" width="450px" alt="Query Athena">
 
+<h2>TMDB</h2>
+<p>Comecei criando minha conta no TMDB, seguindo as instruções necessárias.</p>
+<img src="../Sprint-7/Exercicios/TMDB/perfil_tmdb_criado.png" width="450px" alt="Evidencia conta criada">
+<p>Criei minha credencial de uso da Api, que permite o acesso as requisições:</p>
+<img src="../Sprint-7/Exercicios/TMDB/chave_api_configurada.png" width="450px" alt="Chave api configurada">
+<p>Testei as credencias fazendo um arquivo local, como o exemplo do arquivo</p>
+<a href="../Sprint-7/Exercicios/TMDB/tmdb.py">Script utilizado</a>
+<p>Fiz algumas modificações utilizando um .env para não expor as credenciais, utilizei o git ignore para não subir para o github</p>
+<img src="../Sprint-7/Exercicios/TMDB/arquivo_env_credencial.png" width="450px" alt="Arquivo .env">
+<p>Ao executar consegui o retorno com o seguinte resultado</p>
+<img src="../Sprint-7/Exercicios/TMDB/resultado_script.png" width="450px" alt="Resultado obtido">
 <h2>Certificados</h2>
 <p>Essa Sprint não teve cursos AWS, fiz alguns cursos pela Udemy para me aprofundar no assunto.</p>
 
