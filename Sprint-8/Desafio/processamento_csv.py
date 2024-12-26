@@ -16,18 +16,33 @@ spark = SparkSession(sc)
 # Leitura do CSV com delimitador "|"
 df = spark.read.csv(RAW_PATH, header=True, sep="|", inferSchema=True)
 
-# Limpeza básica dos dados
-# 1. Remover linhas com valores nulos ou campos críticos faltando
-df = df.na.drop(subset=["id", "tituloPincipal", "anoLancamento"])
+# Determina quais colunas estão completamente nulas ou inválidas
+def get_valid_columns(df):
+    valid_columns = []
+    for column in df.columns:
+        # Checa se há pelo menos uma linha válida na coluna (não nula ou não vazia)
+        if df.filter(col(column).isNotNull() & (col(column) != "")).count() > 0:
+            valid_columns.append(column)
+    return valid_columns
 
-# 2. Garantir que o ano de lançamento seja numérico e maior que 1888 (primeiro ano de filmes conhecidos)
-df = df.filter((col("anoLancamento").cast("int").isNotNull()) & (col("anoLancamento") > 1888))
+# Identificar colunas válidas
+valid_columns = get_valid_columns(df)
 
-# 3. Validar o gênero (excluir registros com gênero nulo ou inválido)
-df = df.filter(col("genero").isNotNull())
+# Selecionar apenas colunas válidas
+df = df.select(*valid_columns)
 
-# 4. Opcional: Filtrar filmes com número suficiente de votos e boa nota média (exemplo: mais de 100 votos e nota média > 5)
-df = df.filter((col("numeroVotos") > 100) & (col("notaMedia") > 5))
+# Limpeza adicional somente em colunas importantes se estiverem presentes
+if "anoLancamento" in df.columns:
+    # Garantir que o ano de lançamento seja numérico e maior que 1888 (primeiro ano de filmes conhecidos)
+    df = df.filter((col("anoLancamento").cast("int").isNotNull()) & (col("anoLancamento") > 1888))
+
+if "genero" in df.columns:
+    # Validar o gênero (excluir registros com gênero nulo ou inválido)
+    df = df.filter(col("genero").isNotNull() & (col("genero") != ""))
+
+if "numeroVotos" in df.columns and "notaMedia" in df.columns:
+    # Filtrar filmes com número suficiente de votos e boa nota média
+    df = df.filter((col("numeroVotos") > 100) & (col("notaMedia") > 5))
 
 # Persistir em formato Parquet na camada Trusted
 df.write.mode("overwrite").parquet(TRUSTED_PATH)
