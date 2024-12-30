@@ -55,5 +55,18 @@
 <img src="../Evidencias/executando_athena.png" alt="Executando AWS Athena">
 <img src="../Evidencias/resultado_athena.png" alt="Exemplo de resultado no Athena">
 
+<h2>Explicação das perguntas para Análise dos Dados</h2>  
+<ol>  
+  <li>Quais artistas (atores ou diretores) têm mais obras conhecidas nos gêneros Comédia e Animação?</li>
+   <strong>Minha ideia é cruzar os dados obtidos da TMDb (como elencos e diretores de filmes) com os gêneros indicados nos arquivos CSV ou retornos da API.</strong>
+  <li>Quais anos apresentaram o maior número de lançamentos em comédia e animação?</li>
+  <strong>Minha ideia é identificar picos de popularidade ou produção de conteúdos nesses gêneros.</strong>
+  <li>Quais filmes ou séries de comédia e animação têm o maior número de votos em relação à nota média?</li> 
+  <strong>Os retornos da API TMDb incluem métricas como vote_count e vote_average.</strong>
+  <li>Qual é o tempo médio de duração de filmes de comédia em comparação com animações?</li> 
+  <strong>Explorar peculiaridades de ambos os gêneros e identificar tendências.</strong>
+</ol>  
+
+
 <h2>Conclusão</h2>
 <p>Com a execução bem-sucedida desta etapa, garanti que os dados armazenados na camada Trusted estejam organizados, confiáveis e prontos para análise futura. A utilização do AWS Glue, Amazon S3, e Athena proporcionou uma solução escalável e eficiente para o processamento e consulta dos dados.</p>
