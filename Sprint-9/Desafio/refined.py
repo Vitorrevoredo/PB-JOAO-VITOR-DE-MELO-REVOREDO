@@ -1,0 +1,170 @@
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import (
+    col, lit, monotonically_increasing_id, current_date,
+    date_format, concat_ws, count, avg, year
+)
+from datetime import datetime
+
+# Criar SparkSession
+spark = SparkSession.builder \
+    .appName("Refined Zone Processing") \
+    .getOrCreate()
+
+# Data de processamento
+data_atual = datetime.now()
+ano = data_atual.strftime("%Y")
+mes = data_atual.strftime("%m")
+dia = data_atual.strftime("%d")
+
+# Diretório base para saída
+bucket = "s3://vitor-data-lake/Refined/Parquet/"
+
+# Caminhos de origem
+trusted_csv_path = "s3://vitor-data-lake/Trusted/PARQUET/Movies/"
+trusted_tmdb_path = "s3://vitor-data-lake/Trusted/PARQUET/TMDB/year=2025/month=01/day=03/"
+
+# Carregar os dados Trusted
+df_csv = spark.read.parquet(trusted_csv_path).filter(col("genero").isin("Comedy", "Animation"))
+df_tmdb = spark.read.parquet(trusted_tmdb_path).filter(col("genre_name").isin("Comedy", "Animation"))
+
+# 1. Criar DimArtista
+dim_artista = df_csv.select(
+    monotonically_increasing_id().alias("artista_id"),
+    col("nomeArtista"),
+    col("generoArtista"),
+    col("profissao"),
+    col("anoNascimento"),
+    col("anoFalecimento"),
+    col("titulosMaisConhecidos"),
+    col("personagem")
+).distinct()
+
+dim_artista_path = f"{bucket}DimArtista/year={ano}/month={mes}/day={dia}/"
+dim_artista.write.mode("overwrite").parquet(dim_artista_path)
+
+# 2. Criar DimTempo
+dim_tempo = df_tmdb.select(
+    col("release_date").alias("data_completa")
+).union(
+    df_csv.select(col("anoLancamento").cast("string").alias("data_completa"))
+).distinct()
+
+dim_tempo = dim_tempo.withColumn("tempo_id", monotonically_increasing_id()) \
+    .withColumn("ano", year(col("data_completa"))) \
+    .withColumn("mes", date_format(col("data_completa"), "MM")) \
+    .withColumn("dia", date_format(col("data_completa"), "dd"))
+
+dim_tempo_path = f"{bucket}DimTempo/year={ano}/month={mes}/day={dia}/"
+dim_tempo.write.mode("overwrite").parquet(dim_tempo_path)
+
+# 3. Criar DimGenero
+dim_genero = df_csv.select(
+    col("genero").alias("nome_genero")
+).union(
+    df_tmdb.select(col("genre_name").alias("nome_genero"))
+).distinct()
+
+dim_genero = dim_genero.withColumn("genero_id", monotonically_increasing_id())
+
+dim_genero_path = f"{bucket}DimGenero/year={ano}/month={mes}/day={dia}/"
+dim_genero.write.mode("overwrite").parquet(dim_genero_path)
+
+# 4. Criar DimObra
+dim_obra_csv = df_csv.select(
+    col("id").alias("obra_id"),
+    col("tituloPincipal"),
+    col("tituloOriginal"),
+    col("genero").alias("nome_genero")
+)
+
+# Corrigido para usar as colunas que existem no TMDB
+dim_obra_tmdb = df_tmdb.select(
+    col("tmdb_id").alias("obra_id"),
+    col("title").alias("tituloPincipal"),
+    col("title").alias("tituloOriginal"),  # Usando title como tituloOriginal já que não temos essa coluna
+    col("genre_name").alias("nome_genero")
+)
+
+dim_obra = dim_obra_csv.unionByName(dim_obra_tmdb, allowMissingColumns=True)
+
+# Modificado o join para selecionar especificamente as colunas que queremos manter
+dim_obra = dim_obra.join(
+    dim_genero, 
+    dim_obra.nome_genero == dim_genero.nome_genero, 
+    "left"
+).select(
+    dim_obra.obra_id,
+    dim_obra.tituloPincipal,
+    dim_obra.tituloOriginal,
+    dim_genero.genero_id,  # Agora pegamos o genero_id em vez do nome_genero
+    dim_obra.nome_genero   # Mantemos apenas uma cópia do nome_genero
+)
+
+# Adicionar overview apenas para registros do TMDB
+dim_obra = dim_obra.join(
+    df_tmdb.select("tmdb_id", "overview"),
+    dim_obra.obra_id == df_tmdb.tmdb_id,
+    "left"
+).select(
+    dim_obra.obra_id,
+    dim_obra.tituloPincipal,
+    dim_obra.tituloOriginal,
+    dim_obra.genero_id,
+    dim_obra.nome_genero,
+    col("overview")
+)
+
+dim_obra_path = f"{bucket}DimObra/year={ano}/month={mes}/day={dia}/"
+dim_obra.write.mode("overwrite").parquet(dim_obra_path)
+
+# 5. Criar FatoObras
+fato_obras_csv = df_csv.select(
+    col("id").alias("obra_id"),
+    col("anoLancamento").alias("data_completa"),
+    col("tempoMinutos"),
+    lit(None).cast("double").alias("vote_average"),
+    col("nomeArtista"),
+    col("genero").alias("nome_genero")
+)
+
+fato_obras_tmdb = df_tmdb.select(
+    col("tmdb_id").alias("obra_id"),
+    col("release_date").alias("data_completa"),
+    lit(None).cast("double").alias("tempoMinutos"),  # Substituindo runtime por null se não existir
+    col("vote_average"),
+    lit(None).cast("string").alias("nomeArtista"),
+    col("genre_name").alias("nome_genero")
+)
+
+fato_obras = fato_obras_csv.unionByName(fato_obras_tmdb)
+
+# Adicionar chaves estrangeiras
+fato_obras = fato_obras.join(
+    dim_tempo,
+    fato_obras.data_completa == dim_tempo.data_completa,
+    "left"
+).join(
+    dim_genero,
+    fato_obras.nome_genero == dim_genero.nome_genero,
+    "left"
+).join(
+    dim_artista,
+    fato_obras.nomeArtista == dim_artista.nomeArtista,
+    "left"
+)
+
+# Selecionar colunas finais
+fato_obras = fato_obras.select(
+    col("obra_id"),
+    col("tempo_id"),
+    col("genero_id"),
+    col("artista_id"),
+    col("tempoMinutos"),
+    col("vote_average")
+)
+
+fato_obras_path = f"{bucket}FatoObras/year={ano}/month={mes}/day={dia}/"
+fato_obras.write.mode("overwrite").parquet(fato_obras_path)
+
+# Finalizar SparkSession
+spark.stop()

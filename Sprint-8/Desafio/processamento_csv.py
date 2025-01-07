@@ -31,18 +31,13 @@ valid_columns = get_valid_columns(df)
 # Selecionar apenas colunas válidas
 df = df.select(*valid_columns)
 
-# Limpeza adicional somente em colunas importantes se estiverem presentes
-if "anoLancamento" in df.columns:
-    # Garantir que o ano de lançamento seja numérico e maior que 1888 (primeiro ano de filmes conhecidos)
-    df = df.filter((col("anoLancamento").cast("int").isNotNull()) & (col("anoLancamento") > 1888))
+# Remoção de duplicados com base no ID
+if "id" in df.columns:
+    df = df.dropDuplicates(["id"])
 
 if "genero" in df.columns:
     # Validar o gênero (excluir registros com gênero nulo ou inválido)
     df = df.filter(col("genero").isNotNull() & (col("genero") != ""))
-
-if "numeroVotos" in df.columns and "notaMedia" in df.columns:
-    # Filtrar filmes com número suficiente de votos e boa nota média
-    df = df.filter((col("numeroVotos") > 100) & (col("notaMedia") > 5))
 
 # Persistir em formato Parquet na camada Trusted
 df.write.mode("overwrite").parquet(TRUSTED_PATH)

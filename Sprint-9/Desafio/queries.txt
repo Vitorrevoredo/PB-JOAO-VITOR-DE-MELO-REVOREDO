@@ -1,0 +1,190 @@
+-- 1. Quais são os artistas com maior número de participações em obras, agrupados por gênero?
+
+SELECT 
+    da.nomeartista,
+    dg.nome_genero,
+    COUNT(*) AS num_obras
+FROM 
+    fatoobras fo
+JOIN 
+    dimartista da ON fo.artista_id = da.artista_id
+JOIN 
+    dimobra do ON fo.obra_id = do.obra_id
+JOIN 
+    dimgenero dg ON do.genero_id = dg.genero_id
+GROUP BY 
+    da.nomeartista, dg.nome_genero
+ORDER BY 
+    num_obras DESC;
+
+-- 2. Qual o tempo médio de duração dos filmes em cada gênero?
+SELECT 
+    dg.nome_genero,
+    AVG(CASE 
+            WHEN fo.tempominutos = '\N' THEN NULL  
+            ELSE CAST(fo.tempominutos AS DOUBLE)   
+        END) AS avg_duration
+FROM 
+    fatoobras fo
+JOIN 
+    dimobra do ON fo.obra_id = do.obra_id
+JOIN 
+    dimgenero dg ON do.genero_id = dg.genero_id
+WHERE 
+    fo.tempominutos IS NOT NULL AND fo.tempominutos <> '\N'
+GROUP BY 
+    dg.nome_genero
+ORDER BY 
+    avg_duration DESC;
+
+-- 3. Quais filmes de Comédia e Animação têm as melhores avaliações? 
+WITH ObraGeneroRankeada AS (
+    SELECT
+        do.titulopincipal,
+        dg.nome_genero,
+        AVG(fo.vote_average) AS avg_vote,
+        RANK() OVER (
+            PARTITION BY do.titulopincipal
+            ORDER BY AVG(fo.vote_average) DESC, dg.nome_genero ASC
+        ) AS ranking
+    FROM 
+        fatoobras fo
+    JOIN 
+        dimobra do ON fo.obra_id = do.obra_id
+    JOIN 
+        dimgenero dg ON do.genero_id = dg.genero_id
+    WHERE 
+        dg.nome_genero IN ('Comedy', 'Animation')
+    GROUP BY 
+        do.titulopincipal, dg.nome_genero
+)
+SELECT 
+    titulopincipal,
+    nome_genero,
+    avg_vote
+FROM 
+    ObraGeneroRankeada
+WHERE 
+    ranking = 1
+ORDER BY 
+    avg_vote DESC;
+
+-- 4. Quantos títulos foram lançados em cada ano?
+SELECT 
+    dt.ano AS year,
+    COUNT(*) AS num_titulos
+FROM 
+    fatoobras fo
+JOIN 
+    dimtempo dt ON fo.tempo_id = dt.tempo_id
+GROUP BY 
+    dt.ano
+ORDER BY 
+    year ASC;
+
+-- 5. Qual gênero tem maior número de títulos com duração acima de 120 minutos?
+SELECT 
+    dg.nome_genero,
+    COUNT(*) AS num_titulos_longos
+FROM 
+    fatoobras fo
+JOIN 
+    dimobra do ON fo.obra_id = do.obra_id
+JOIN 
+    dimgenero dg ON do.genero_id = dg.genero_id
+WHERE 
+    CAST(fo.tempominutos AS DOUBLE) > 120
+GROUP BY 
+    dg.nome_genero
+ORDER BY 
+    num_titulos_longos DESC;
+
+-- 6. Quais anos apresentaram o maior número de lançamentos?
+SELECT 
+    dt.ano AS year,
+    COUNT(*) AS num_lancamentos
+FROM 
+    fatoobras fo
+JOIN 
+    dimtempo dt ON fo.tempo_id = dt.tempo_id
+GROUP BY 
+    dt.ano
+ORDER BY 
+    num_lancamentos DESC;
+
+-- 7. Como a nota média dos títulos de determinado gênero está relacionada ao tempo de duração?
+SELECT 
+    dg.nome_genero,
+    AVG(CASE 
+            WHEN fo.tempominutos = '\N' THEN NULL  
+            ELSE CAST(fo.tempominutos AS DOUBLE)
+        END) AS avg_duration,
+    AVG(fo.vote_average) AS avg_vote
+FROM 
+    fatoobras fo
+JOIN 
+    dimobra do ON fo.obra_id = do.obra_id
+JOIN 
+    dimgenero dg ON do.genero_id = dg.genero_id
+WHERE 
+    fo.tempominutos IS NOT NULL AND fo.tempominutos <> '\N'
+GROUP BY 
+    dg.nome_genero
+ORDER BY 
+    avg_vote DESC;
+
+-- 8. Quais títulos têm os melhores desempenhos considerando a avaliação e duração?
+SELECT 
+    do.titulopincipal,
+    dg.nome_genero,
+    AVG(fo.vote_average) AS avg_vote,
+    AVG(CASE 
+            WHEN fo.tempominutos = '\N' THEN NULL  
+            ELSE CAST(fo.tempominutos AS DOUBLE)  
+        END) AS avg_duration
+FROM 
+    fatoobras fo
+JOIN 
+    dimobra do ON fo.obra_id = do.obra_id
+JOIN 
+    dimgenero dg ON do.genero_id = dg.genero_id
+WHERE 
+    fo.vote_average IS NOT NULL AND fo.tempominutos IS NOT NULL AND fo.tempominutos <> '\N'
+GROUP BY 
+    do.titulopincipal, dg.nome_genero
+ORDER BY 
+    avg_vote DESC, avg_duration DESC;
+
+-- 9. Quais artistas participaram de mais títulos conhecidos nos gêneros?
+SELECT 
+    da.nomeartista,
+    dg.nome_genero,
+    COUNT(*) AS num_obras
+FROM 
+    fatoobras fo
+JOIN 
+    dimartista da ON fo.artista_id = da.artista_id
+JOIN 
+    dimobra do ON fo.obra_id = do.obra_id
+JOIN 
+    dimgenero dg ON do.genero_id = dg.genero_id
+GROUP BY 
+    da.nomeartista, dg.nome_genero
+ORDER BY 
+    num_obras DESC;
+
+-- 10. Quais anos foram mais significativos em termos de lançamento e avaliação?
+SELECT 
+    dt.ano AS year,
+    COUNT(*) AS num_lancamentos,
+    AVG(fo.vote_average) AS avg_vote
+FROM 
+    fatoobras fo
+JOIN 
+    dimtempo dt ON fo.tempo_id = dt.tempo_id
+WHERE 
+    fo.vote_average IS NOT NULL
+GROUP BY 
+    dt.ano
+ORDER BY 
+    num_lancamentos DESC, avg_vote DESC;
