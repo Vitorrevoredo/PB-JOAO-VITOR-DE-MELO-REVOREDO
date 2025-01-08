@@ -1,8 +1,9 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
     col, lit, monotonically_increasing_id, current_date,
-    date_format, concat_ws, count, avg, year
+    date_format, concat_ws, count, avg, year, row_number
 )
+from pyspark.sql.window import Window
 from datetime import datetime
 
 # Criar SparkSession
@@ -20,7 +21,7 @@ dia = data_atual.strftime("%d")
 bucket = "s3://vitor-data-lake/Refined/Parquet/"
 
 # Caminhos de origem
-trusted_csv_path = "s3://vitor-data-lake/Trusted/PARQUET/Movies/"
+trusted_csv_path = "s3://vitor-data-lake/Trusted/PARQUET/Movies/year=2025/month=01/day=03/"
 trusted_tmdb_path = "s3://vitor-data-lake/Trusted/PARQUET/TMDB/year=2025/month=01/day=03/"
 
 # Carregar os dados Trusted
@@ -77,17 +78,15 @@ dim_obra_csv = df_csv.select(
     col("genero").alias("nome_genero")
 )
 
-# Corrigido para usar as colunas que existem no TMDB
 dim_obra_tmdb = df_tmdb.select(
     col("tmdb_id").alias("obra_id"),
     col("title").alias("tituloPincipal"),
-    col("title").alias("tituloOriginal"),  # Usando title como tituloOriginal já que não temos essa coluna
+    col("title").alias("tituloOriginal"),
     col("genre_name").alias("nome_genero")
 )
 
 dim_obra = dim_obra_csv.unionByName(dim_obra_tmdb, allowMissingColumns=True)
 
-# Modificado o join para selecionar especificamente as colunas que queremos manter
 dim_obra = dim_obra.join(
     dim_genero, 
     dim_obra.nome_genero == dim_genero.nome_genero, 
@@ -96,23 +95,14 @@ dim_obra = dim_obra.join(
     dim_obra.obra_id,
     dim_obra.tituloPincipal,
     dim_obra.tituloOriginal,
-    dim_genero.genero_id,  # Agora pegamos o genero_id em vez do nome_genero
-    dim_obra.nome_genero   # Mantemos apenas uma cópia do nome_genero
+    dim_genero.genero_id,
+    dim_obra.nome_genero
 )
 
-# Adicionar overview apenas para registros do TMDB
-dim_obra = dim_obra.join(
-    df_tmdb.select("tmdb_id", "overview"),
-    dim_obra.obra_id == df_tmdb.tmdb_id,
-    "left"
-).select(
-    dim_obra.obra_id,
-    dim_obra.tituloPincipal,
-    dim_obra.tituloOriginal,
-    dim_obra.genero_id,
-    dim_obra.nome_genero,
-    col("overview")
-)
+# Remover duplicados baseando-se no título principal e ID único
+dim_obra_window = Window.partitionBy("tituloPincipal").orderBy(col("obra_id"))
+dim_obra = dim_obra.withColumn("row_number", row_number().over(dim_obra_window))
+dim_obra = dim_obra.filter(col("row_number") == 1).drop("row_number")
 
 dim_obra_path = f"{bucket}DimObra/year={ano}/month={mes}/day={dia}/"
 dim_obra.write.mode("overwrite").parquet(dim_obra_path)
@@ -130,7 +120,7 @@ fato_obras_csv = df_csv.select(
 fato_obras_tmdb = df_tmdb.select(
     col("tmdb_id").alias("obra_id"),
     col("release_date").alias("data_completa"),
-    lit(None).cast("double").alias("tempoMinutos"),  # Substituindo runtime por null se não existir
+    lit(None).cast("double").alias("tempoMinutos"),
     col("vote_average"),
     lit(None).cast("string").alias("nomeArtista"),
     col("genre_name").alias("nome_genero")
@@ -138,7 +128,6 @@ fato_obras_tmdb = df_tmdb.select(
 
 fato_obras = fato_obras_csv.unionByName(fato_obras_tmdb)
 
-# Adicionar chaves estrangeiras
 fato_obras = fato_obras.join(
     dim_tempo,
     fato_obras.data_completa == dim_tempo.data_completa,
@@ -153,7 +142,7 @@ fato_obras = fato_obras.join(
     "left"
 )
 
-# Selecionar colunas finais
+# Selecionar colunas finais e remover duplicados baseando-se em métricas principais
 fato_obras = fato_obras.select(
     col("obra_id"),
     col("tempo_id"),
@@ -161,7 +150,7 @@ fato_obras = fato_obras.select(
     col("artista_id"),
     col("tempoMinutos"),
     col("vote_average")
-)
+).distinct()
 
 fato_obras_path = f"{bucket}FatoObras/year={ano}/month={mes}/day={dia}/"
 fato_obras.write.mode("overwrite").parquet(fato_obras_path)

@@ -18,6 +18,7 @@ ORDER BY
     num_obras DESC;
 
 -- 2. Qual o tempo médio de duração dos filmes em cada gênero?
+
 SELECT 
     dg.nome_genero,
     AVG(CASE 
@@ -188,3 +189,40 @@ GROUP BY
     dt.ano
 ORDER BY 
     num_lancamentos DESC, avg_vote DESC;
+-- 11. Quais Titulos têm maior avaliação média no gênero Animação?
+
+SELECT 
+    do.titulopincipal AS franquia,
+    AVG(fo.vote_average) AS media_avaliacao,
+    COUNT(DISTINCT fo.obra_id) AS total_obras
+FROM 
+    fatoobras fo
+JOIN 
+    dimobra do ON fo.obra_id = do.obra_id
+JOIN 
+    dimgenero dg ON fo.genero_id = dg.genero_id
+WHERE 
+    dg.nome_genero = 'Animation'
+GROUP BY 
+    do.titulopincipal
+ORDER BY 
+    media_avaliacao DESC;
+-- 12.  Qual é a duração média de animações lançadas por ano?
+SELECT 
+    dt.ano,
+    AVG(CAST(CASE WHEN fo.tempominutos = '\N' THEN NULL ELSE fo.tempominutos END AS INT)) AS duracao_media
+FROM 
+    fatoobras fo
+JOIN 
+    dimtempo dt ON fo.tempo_id = dt.tempo_id
+JOIN 
+    dimgenero dg ON fo.genero_id = dg.genero_id
+WHERE 
+    dg.nome_genero = 'Animation'
+    AND fo.tempominutos != '\N'
+GROUP BY 
+    dt.ano
+HAVING
+    AVG(CAST(CASE WHEN fo.tempominutos = '\N' THEN NULL ELSE fo.tempominutos END AS INT)) IS NOT NULL
+ORDER BY 
+    dt.ano ASC;
