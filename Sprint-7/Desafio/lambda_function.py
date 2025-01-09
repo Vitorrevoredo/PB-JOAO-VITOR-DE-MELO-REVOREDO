@@ -4,7 +4,7 @@ import csv
 import os
 from datetime import datetime
 from io import StringIO
-from tmdbv3api import TMDb, Discover
+from tmdbv3api import TMDb, Discover, Movie
 
 # Configuração do TMDb
 tmdb = TMDb()
@@ -12,9 +12,10 @@ tmdb.api_key = os.getenv('TMDB_API_KEY')  # A chave será lida da variável de a
 tmdb.language = 'pt-BR'
 
 tmdb_discover = Discover()
+tmdb_movie = Movie()
 
 bucket_name = 'vitor-data-lake'
-movies_path = 'Raw/Local/CSV/Movies/2024/11/27/movies.csv'
+movies_path = 's3://vitor-data-lake/Raw/Local/CSV/Movies/2024/11/27/'
 
 # Configuração do S3
 s3_client = boto3.client('s3')
@@ -45,16 +46,22 @@ class S3Handler:
                     break
 
                 for item in items:
-                    # Identificar o nome do gênero diretamente
                     genero_nome = None
                     for genre in item.genre_ids:
                         if genre == genero_id:
-                            # O nome do gênero será identificado com base no id que estamos passando
                             if genero_id == 35:  # Comédia
                                 genero_nome = 'Comedy'
                             elif genero_id == 16:  # Animação
                                 genero_nome = 'Animation'
                             break
+
+                    # Buscar detalhes adicionais do filme, incluindo receita e orçamento
+                    detalhes = {}
+                    if tipo == 'movie':
+                        try:
+                            detalhes = tmdb_movie.details(item.id)
+                        except Exception as e:
+                            print(f"Erro ao buscar detalhes do filme ID {item.id}: {str(e)}")
 
                     resultados.append({
                         'tmdb_id': item.id,
@@ -62,13 +69,18 @@ class S3Handler:
                         'overview': item.overview,
                         'release_date': item.release_date if tipo == 'movie' else item.first_air_date,
                         'vote_average': item.vote_average,
-                        'genre_name': genero_nome  # Nome do gênero no resultado
+                        'genre_name': genero_nome,
+                        'budget': detalhes.get('budget'),
+                        'revenue': detalhes.get('revenue')
                     })
             except Exception as e:
                 print(f"Erro na busca por gênero {genero_id} na página {pagina}: {str(e)}")
         return resultados
 
-    # Busca por gêneros
+# Inicializar o processamento
+def lambda_handler(event, context):
+    s3_handler = S3Handler(bucket_name)
+
     print("Iniciando busca por gêneros.")
     generos = [35, 16]  # IDs para Comédia e Animação
     for genero in generos:
@@ -78,10 +90,4 @@ class S3Handler:
             s3_handler.save_json_to_s3(resultados_genero, f'{tipo}_genre_{genero}')
 
     print("Processamento concluído para todos os gêneros.")
-
-def lambda_handler(event, context):
-    s3_handler = S3Handler(bucket_name)
-
-    processar_dados_em_pedacos(s3_handler)
-
     return {"status": "Processamento finalizado"}

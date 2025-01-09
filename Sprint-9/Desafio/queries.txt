@@ -1,4 +1,4 @@
--- 1. Quais são os artistas com maior número de participações em obras, agrupados por gênero?
+1. Quais são os artistas com maior número de participações em obras, agrupados por gênero?
 
 SELECT 
     da.nomeartista,
@@ -17,7 +17,7 @@ GROUP BY
 ORDER BY 
     num_obras DESC;
 
--- 2. Qual o tempo médio de duração dos filmes em cada gênero?
+2. Qual o tempo médio de duração dos filmes em cada gênero?
 
 SELECT 
     dg.nome_genero,
@@ -37,8 +37,9 @@ GROUP BY
     dg.nome_genero
 ORDER BY 
     avg_duration DESC;
+    
+3. Quais filmes de Comédia e Animação têm as melhores avaliações?
 
--- 3. Quais filmes de Comédia e Animação têm as melhores avaliações? 
 WITH ObraGeneroRankeada AS (
     SELECT
         do.titulopincipal,
@@ -70,7 +71,8 @@ WHERE
 ORDER BY 
     avg_vote DESC;
 
--- 4. Quantos títulos foram lançados em cada ano?
+4. Quantos títulos foram lançados em cada ano?
+
 SELECT 
     dt.ano AS year,
     COUNT(*) AS num_titulos
@@ -83,24 +85,24 @@ GROUP BY
 ORDER BY 
     year ASC;
 
--- 5. Qual gênero tem maior número de títulos com duração acima de 120 minutos?
+5. Qual é a relação entre o orçamento e a receita para cada gênero?
+
 SELECT 
     dg.nome_genero,
-    COUNT(*) AS num_titulos_longos
+    AVG(do.budget) AS avg_budget,
+    AVG(do.revenue) AS avg_revenue,
+    AVG(do.revenue / NULLIF(do.budget, 0)) AS retorno_investimento
 FROM 
-    fatoobras fo
-JOIN 
-    dimobra do ON fo.obra_id = do.obra_id
+    dimobra do
 JOIN 
     dimgenero dg ON do.genero_id = dg.genero_id
-WHERE 
-    CAST(fo.tempominutos AS DOUBLE) > 120
 GROUP BY 
     dg.nome_genero
 ORDER BY 
-    num_titulos_longos DESC;
+    retorno_investimento DESC;
 
--- 6. Quais anos apresentaram o maior número de lançamentos?
+6. Quais anos apresentaram o maior número de lançamentos?
+
 SELECT 
     dt.ano AS year,
     COUNT(*) AS num_lancamentos
@@ -113,68 +115,38 @@ GROUP BY
 ORDER BY 
     num_lancamentos DESC;
 
--- 7. Como a nota média dos títulos de determinado gênero está relacionada ao tempo de duração?
-SELECT 
-    dg.nome_genero,
-    AVG(CASE 
-            WHEN fo.tempominutos = '\N' THEN NULL  
-            ELSE CAST(fo.tempominutos AS DOUBLE)
-        END) AS avg_duration,
-    AVG(fo.vote_average) AS avg_vote
-FROM 
-    fatoobras fo
-JOIN 
-    dimobra do ON fo.obra_id = do.obra_id
-JOIN 
-    dimgenero dg ON do.genero_id = dg.genero_id
-WHERE 
-    fo.tempominutos IS NOT NULL AND fo.tempominutos <> '\N'
-GROUP BY 
-    dg.nome_genero
-ORDER BY 
-    avg_vote DESC;
+7. Quais filmes de animação têm o maior orçamento?
 
--- 8. Quais títulos têm os melhores desempenhos considerando a avaliação e duração?
 SELECT 
     do.titulopincipal,
-    dg.nome_genero,
-    AVG(fo.vote_average) AS avg_vote,
-    AVG(CASE 
-            WHEN fo.tempominutos = '\N' THEN NULL  
-            ELSE CAST(fo.tempominutos AS DOUBLE)  
-        END) AS avg_duration
+    do.budget
 FROM 
-    fatoobras fo
-JOIN 
-    dimobra do ON fo.obra_id = do.obra_id
+    dimobra do
 JOIN 
     dimgenero dg ON do.genero_id = dg.genero_id
 WHERE 
-    fo.vote_average IS NOT NULL AND fo.tempominutos IS NOT NULL AND fo.tempominutos <> '\N'
-GROUP BY 
-    do.titulopincipal, dg.nome_genero
+    dg.nome_genero = 'Animation'
 ORDER BY 
-    avg_vote DESC, avg_duration DESC;
+    do.budget DESC
+LIMIT 10;
 
--- 9. Quais artistas participaram de mais títulos conhecidos nos gêneros?
+8. Quais filmes tiveram o maior lucro (receita - orçamento) no gênero "Animação"?
+
 SELECT 
-    da.nomeartista,
-    dg.nome_genero,
-    COUNT(*) AS num_obras
+    do.titulopincipal,
+    (do.revenue - do.budget) AS lucro
 FROM 
-    fatoobras fo
-JOIN 
-    dimartista da ON fo.artista_id = da.artista_id
-JOIN 
-    dimobra do ON fo.obra_id = do.obra_id
+    dimobra do
 JOIN 
     dimgenero dg ON do.genero_id = dg.genero_id
-GROUP BY 
-    da.nomeartista, dg.nome_genero
+WHERE 
+    dg.nome_genero = 'Animation'
 ORDER BY 
-    num_obras DESC;
+    lucro DESC
+LIMIT 10;
 
--- 10. Quais anos foram mais significativos em termos de lançamento e avaliação?
+9. Quais anos foram mais significativos em termos de lançamento e avaliação?
+
 SELECT 
     dt.ano AS year,
     COUNT(*) AS num_lancamentos,
@@ -189,40 +161,98 @@ GROUP BY
     dt.ano
 ORDER BY 
     num_lancamentos DESC, avg_vote DESC;
--- 11. Quais Titulos têm maior avaliação média no gênero Animação?
+
+10. Qual o orçamento médio de filmes em cada gênero?
 
 SELECT 
-    do.titulopincipal AS franquia,
-    AVG(fo.vote_average) AS media_avaliacao,
-    COUNT(DISTINCT fo.obra_id) AS total_obras
+    dg.nome_genero,
+    AVG(fo.budget) AS avg_budget
 FROM 
     fatoobras fo
 JOIN 
     dimobra do ON fo.obra_id = do.obra_id
 JOIN 
-    dimgenero dg ON fo.genero_id = dg.genero_id
-WHERE 
-    dg.nome_genero = 'Animation'
+    dimgenero dg ON do.genero_id = dg.genero_id
 GROUP BY 
-    do.titulopincipal
+    dg.nome_genero
 ORDER BY 
-    media_avaliacao DESC;
--- 12.  Qual é a duração média de animações lançadas por ano?
+    avg_budget DESC;
+
+11. Qual o retorno financeiro médio dos filmes com maior sucesso (considerando a diferença entre revenue e budget)?
+
 SELECT 
-    dt.ano,
-    AVG(CAST(CASE WHEN fo.tempominutos = '\N' THEN NULL ELSE fo.tempominutos END AS INT)) AS duracao_media
+    do.titulopincipal,
+    AVG(CASE WHEN fo.revenue IS NULL OR fo.budget = 0 THEN NULL
+        ELSE (fo.revenue - fo.budget) / fo.budget END) AS avg_return
 FROM 
     fatoobras fo
 JOIN 
-    dimtempo dt ON fo.tempo_id = dt.tempo_id
+    dimobra do ON fo.obra_id = do.obra_id
+GROUP BY 
+    do.titulopincipal
+ORDER BY 
+    avg_return DESC;
+
+12. Quais artistas têm as obras com maior lucro?
+
+SELECT 
+    da.nomeartista,
+    (SUM(do.revenue) - SUM(do.budget)) AS lucro_total
+FROM 
+    fatoobras fo
 JOIN 
-    dimgenero dg ON fo.genero_id = dg.genero_id
+    dimartista da ON fo.artista_id = da.artista_id
+JOIN 
+    dimobra do ON fo.obra_id = do.obra_id
+GROUP BY 
+    da.nomeartista
+ORDER BY 
+    lucro_total DESC;
+13. Qual foi o filme de animação mais lucrativo em relação ao orçamento?
+
+SELECT 
+    do.titulopincipal,
+    (do.revenue - do.budget) / NULLIF(do.budget, 0) AS retorno_investimento
+FROM 
+    dimobra do
+JOIN 
+    dimgenero dg ON do.genero_id = dg.genero_id
 WHERE 
     dg.nome_genero = 'Animation'
-    AND fo.tempominutos != '\N'
-GROUP BY 
-    dt.ano
-HAVING
-    AVG(CAST(CASE WHEN fo.tempominutos = '\N' THEN NULL ELSE fo.tempominutos END AS INT)) IS NOT NULL
 ORDER BY 
-    dt.ano ASC;
+    retorno_investimento DESC
+LIMIT 1;
+
+14. Quais são os filmes de maior orçamento que não atingiram o sucesso financeiro esperado?
+
+SELECT 
+    do.titulopincipal,
+    do.budget,
+    do.revenue,
+    (do.revenue - do.budget) AS lucro
+FROM 
+    dimobra do
+JOIN 
+    dimgenero dg ON do.genero_id = dg.genero_id
+WHERE 
+    do.budget > 1000000
+    AND do.revenue < do.budget
+ORDER BY 
+    lucro ASC
+LIMIT 10;
+
+15. Quais gêneros de filmes tiveram os maiores lançamentos globais (por receita)?
+
+SELECT 
+    dg.nome_genero,
+    SUM(do.revenue) AS total_revenue
+FROM 
+    dimobra do
+JOIN 
+    dimgenero dg ON do.genero_id = dg.genero_id
+WHERE 
+    do.revenue > 0
+GROUP BY 
+    dg.nome_genero
+ORDER BY 
+    total_revenue DESC;

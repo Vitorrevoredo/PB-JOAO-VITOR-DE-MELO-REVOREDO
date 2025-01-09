@@ -14,9 +14,9 @@
 <p>Tive que refazer alguns passos das etapas anteriores:</p>
 
 <h3>Função Lambda</h3>
-<p>A busca dos filmes na função Lambda estava trazendo os filmes sem especificar o gênero no JSON. Para facilitar a separação dos filmes na camada Refined, reestruturei a função para incluir o gênero corretamente:</p>
+<p>A busca dos filmes na função Lambda estava trazendo os filmes sem especificar o gênero no JSON e não tinha dados necessários como o Orçamento. Para facilitar a separação dos filmes na camada Refined, reestruturei a função para incluir os dados corretamente:</p>
 <img src="../Evidencias/erro_genero_lambda.png" alt="Erro função lambda">
-<img src="../Evidencias/ajustes_generos_lambda.png" alt="Ajuste Função Lambda">
+<img src="../Evidencias/ajustes_lambda.png" alt="Ajuste Função Lambda">
 <p>Resultado do ajuste:</p>
 <img src="../Evidencias/ajuste_json_lambda.png" alt="Resultado ajuste gênero">
 <a href="../../Sprint-7/Desafio/lambda_function.py">Função Lambda Ajustada</a>
@@ -100,14 +100,17 @@
   <li>Qual o tempo médio de duração dos filmes em cada gênero?</li>
   <li>Quais filmes de Comédia e Animação têm as melhores avaliações?</li>
   <li>Quantos títulos foram lançados em cada ano?</li>
-  <li>Qual gênero tem maior número de títulos com duração superior a 120 minutos?</li>
+  <li>Qual é a relação entre o orçamento e a receita para cada gênero?</li>
   <li>Quais anos apresentaram o maior número de lançamentos?</li>
-  <li>Como a nota média dos títulos de determinado gênero está relacionada ao tempo de duração?</li>
-  <li>Quais títulos têm os melhores desempenhos considerando a avaliação e duração?</li>
-  <li>Quais artistas participaram de mais títulos conhecidos nos gêneros?</li>
+  <li>Quais filmes de animação têm o maior orçamento?</li>
+  <li>Quais filmes tiveram o maior lucro (receita - orçamento) no gênero "Animação"?</li>
   <li>Quais anos foram mais significativos em termos de lançamento e avaliação?</li>
-  <li>Quais Titulos têm maior avaliação média no gênero Animação? </li>
-  <li>Qual é a duração média de animações lançadas por ano?</li>
+  <li>Qual o orçamento médio de filmes em cada gênero?</li>
+  <li>Qual o retorno financeiro médio dos filmes com maior sucesso (considerando a diferença entre revenue e budget)?</li>
+  <li>Quais artistas têm as obras com maior lucro?</li>
+  <li>Qual foi o filme de animação mais lucrativo em relação ao orçamento?</li>
+  <li>Quais são os filmes de maior orçamento que não atingiram o sucesso financeiro esperado?</li>
+  <li>Quais gêneros de filmes tiveram os maiores lançamentos globais (por receita)?</li>
 </ol>
 
 <h2>Queries para Responder as Perguntas</h2>
@@ -128,4 +131,4 @@
 <img src="../Evidencias/teste_athena_tempo_medio.png" alt="Pergunta 2">
 
 <h2>Conclusão</h2>
-<p>Com o processamento e a modelagem bem-sucedidos nesta etapa, os dados na Refined Zone estão prontos para serem visualizados no Amazon QuickSight, atendendo a perguntas analíticas e oferecendo insights estratégicos sobre os gêneros Comédia e Animação.</p>
+<p>Com o processamento e a modelagem bem-sucedidos nesta etapa, os dados na Refined Zone estão prontos para serem visualizados no Amazon QuickSight, onde será possível realizar as análises especificadas nas próximas sprints. Esta etapa oferece uma base sólida para análise aprofundada e criação de dashboards, cumprindo o objetivo principal da sprint.</p>

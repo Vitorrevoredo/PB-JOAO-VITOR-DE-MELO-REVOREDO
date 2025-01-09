@@ -1,7 +1,7 @@
 import sys
 from pyspark.context import SparkContext
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, current_date, year, month, dayofmonth
+from pyspark.sql.functions import col, current_date
 from awsglue.utils import getResolvedOptions
 from datetime import datetime
 
