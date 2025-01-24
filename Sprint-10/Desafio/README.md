@@ -19,6 +19,11 @@
     <li><strong>Sprint 10:</strong> Construção de dashboards estratégicos e análise de dados para decisões mais eficazes.</li>
 </ul>
 
+<h2>Ajustes no modelo dimensional:</h2>
+<p>Como foi comentado um sobre a modelagem, onde não estava indicado o tipo de cada informação, adicionei a informação</p>
+<img src="../Evidencias/modeloDimensional.png" alt="Modelo dimensional ajustado" width= 500px>
+<a href="Modelagem.pdf">Modelo Dimensional PDF</a>
+
 <h2>Ferramentas e Tecnologias</h2>
 <p>
     Para alcançar os resultados, utilizei as seguintes ferramentas e tecnologias:
