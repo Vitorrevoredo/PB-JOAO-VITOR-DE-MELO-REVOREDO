@@ -17,27 +17,22 @@ GROUP BY
 ORDER BY 
     num_obras DESC;
 
-2. Qual o tempo médio de duração dos filmes em cada gênero?
+2. Qual a distribuição dos filmes em cada gênero?
 
 SELECT 
-    dg.nome_genero,
-    AVG(CASE 
-            WHEN fo.tempominutos = '\N' THEN NULL  
-            ELSE CAST(fo.tempominutos AS DOUBLE)   
-        END) AS avg_duration
+    dg.nome_genero, 
+    COUNT(*) AS num_filmes
 FROM 
     fatoobras fo
 JOIN 
     dimobra do ON fo.obra_id = do.obra_id
 JOIN 
     dimgenero dg ON do.genero_id = dg.genero_id
-WHERE 
-    fo.tempominutos IS NOT NULL AND fo.tempominutos <> '\N'
 GROUP BY 
     dg.nome_genero
 ORDER BY 
-    avg_duration DESC;
-    
+    num_filmes DESC; 
+
 3. Quais filmes de Comédia e Animação têm as melhores avaliações?
 
 WITH ObraGeneroRankeada AS (
@@ -193,22 +188,7 @@ GROUP BY
 ORDER BY 
     avg_return DESC;
 
-12. Quais artistas têm as obras com maior lucro?
-
-SELECT 
-    da.nomeartista,
-    (SUM(do.revenue) - SUM(do.budget)) AS lucro_total
-FROM 
-    fatoobras fo
-JOIN 
-    dimartista da ON fo.artista_id = da.artista_id
-JOIN 
-    dimobra do ON fo.obra_id = do.obra_id
-GROUP BY 
-    da.nomeartista
-ORDER BY 
-    lucro_total DESC;
-13. Qual foi o filme de animação mais lucrativo em relação ao orçamento?
+12. Qual foi o filme de animação mais lucrativo em relação ao orçamento?
 
 SELECT 
     do.titulopincipal,
@@ -223,7 +203,7 @@ ORDER BY
     retorno_investimento DESC
 LIMIT 1;
 
-14. Quais são os filmes de maior orçamento que não atingiram o sucesso financeiro esperado?
+13. Quais são os filmes de maior orçamento que não atingiram o sucesso financeiro esperado?
 
 SELECT 
     do.titulopincipal,
@@ -241,7 +221,7 @@ ORDER BY
     lucro ASC
 LIMIT 10;
 
-15. Quais gêneros de filmes tiveram os maiores lançamentos globais (por receita)?
+14. Quais gêneros de filmes tiveram os maiores lançamentos globais (por receita)?
 
 SELECT 
     dg.nome_genero,
