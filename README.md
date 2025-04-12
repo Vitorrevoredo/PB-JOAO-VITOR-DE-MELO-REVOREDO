@@ -11,4 +11,4 @@ Este repositório reúne projetos práticos com uso de serviços e ferramentas c
 - **AWS Athena** – Consultas SQL diretamente sobre dados no S3.
 - **AWS QuickSight** – Dashboards interativos para análise de dados.
 - **S3, Lambda, CloudWatch** – Suporte à arquitetura serverless e automação.
-- **Python, com apoio de bibliotecas como `pandas`, `boto3`, `pyspark`, entre outras.
+- **Python**, com apoio de bibliotecas como `pandas`, `boto3`, `pyspark`, entre outras.
