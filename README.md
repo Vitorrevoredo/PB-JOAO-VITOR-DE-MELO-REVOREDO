@@ -7,13 +7,5 @@
 Tenho conhecimento em HTML, CSS, JavaScript e Python, e estou buscando aprimorar minhas habilidades.
 <p>Vejo no estágio da Compass UoL uma grande oportunidade para me inserir no mercado de trabalho.</p>
 
-## 📚🏊‍♂️ Hobbies
-<p>  Gosto muito de ler, meus gêneros favoritos são suspense, ficção científica e fantasia. <br> 
-Além disso, sou apaixonado por tecnologia e adoro aprender coisas novas. <br>
-Faço musculação e recentemente natação durante a semana. </p>
-
 ## 🌍 Idiomas
-<p>Estou sempre praticando o inglês e atualmente estou tentando aprender francês. </p>
-
-## 🎯🚀 Objetivos
-<p> Estou buscando desenvolver minhas habilidades na área de tecnologia, quero crescer como profissional e não tenho dúvidas de que, por meio do estágio na Compass UoL, vou aprimorar minhas competências em um ambiente inspirador.</p>
+<p>Estou sempre praticando o inglês. </p>
